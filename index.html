@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<!--                                             
+=======================================================================
+                 __                        __               
+                /\ \  __                  /\ \__            
+                \_\ \/\_\    ___      __  \ \ ,_\    __     
+                /'_` \/\ \ /' _ `\  /'__`\ \ \ \/  /'__`\   
+               /\ \_\ \ \ \/\ \/\ \/\ \_\.\_\ \ \_/\ \_\.\_ 
+               \ \___,_\ \_\ \_\ \_\ \__/.\_\\ \__\ \__/.\_\
+                \/__,_ /\/_/\/_/\/_/\/__/\/_/ \/__/\/__/\/_/
+                                             
+=======================================================================
+   Diagonal Noise
+   Build: Mar 19th, 2014
+   By: Dinata Daniel
+=======================================================================
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=false" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>{block:IfTitle}{text:Title} &#124; {/block:IfTitle}{Title}{block:PostSummary} &#124; {PostSummary}{/block:PostSummary}{block:SearchPage} &#124; Search results for {SearchQuery}{/block:SearchPage}</title>
+    <meta name="description" content="{block:PostSummary}{PostSummary}{/block:PostSummary}{block:Description}{MetaDescription}{/block:Description}" />
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+    <link rel="apple-touch-icon" href="{PortraitURL-128}" />
+    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-64}" />
+    <link rel="canonical" href="{block:IndexPage}{BlogURL}{/block:IndexPage}{block:PermalinkPage}{Permalink}{/block:PermalinkPage}" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family={block:IfGoogleFonts}{select:Font Title}|{/block:IfGoogleFonts}Faster+One{block:IfSpecificTitleChar}&amp;text={text:Specific Title Char}{/block:IfSpecificTitleChar}" />
+    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/Oubn2nz1k/style.min.css" />{block:IfShowSlideshow}{block:IndexPage}
+    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/EuQn2nz0z/slider.min.css" />{/block:IndexPage}{/block:IfShowslideShow}
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/g0Fn2nyzh/ie7.min.css" />
+    <![endif]-->{block:PermalinkPage}
+    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/k0Un2nz0d/permalink.min.css" />{/block:PermalinkPage}
+    <style type="text/css">
+      body {
+      font:.8em/160% {select:Font Body};
+      color:{color:Body Color};{block:IfBgImage}
+      background-image:url('{image:Background}');
+      background-attachment:fixed;
+      background-repeat:repeat;{/block:IfBgImage}
+      background-color:{color:Body BG};
+      word-wrap:break-word
+      }
+      #loading {
+      background:url('{image:loading}') no-repeat center center
+      }
+      #header h1 a {
+      font-family:{block:IfGoogleFonts}{select:Font Title},{/block:IfGoogleFonts}'Faster One',cursive;{block:IfTitleShadow}
+      text-shadow:4px 4px 4px {color:Header Title Shadow}{/block:IfTitleShadow}
+      }
+      #menu,.entry h2,#footer,#pagination,#navigation {
+      font-family:{select:Font Body}
+      }
+      .entry span.like-button:hover,.entry a.permalink-button:hover,
+      .entry a.reblog-button:hover,.entry a.zoom:hover,#credit span.left,
+      #footer #company-information .information-block a:hover,
+      div.about p img,#dc-tooltip,.searchbutton {
+      background:{color:1st BG}
+      }
+      #menu,#header,div.about,#footer,.entry,.entry .details,
+      .perma-container,#pagination a,#scrollUp,#middle {
+      background:{color:2nd BG}
+      }
+      .entry .overlay,#scrollUp:hover,#header #navigation a:hover,
+      #pagination a:hover,.entry .odd,.ask,.quote,
+      .pagestitle:hover,.pagestitle span,.pageslines {
+      background:{color:3rd BG}
+      }
+      .entry .overlay {
+      background:{color:4th BG}
+      }
+      #credit span.right {
+      background:{color:Border}
+      }
+      ul#page li:hover {
+      background:{color:Header Shadow}
+      }
+      #menu #wrapper #contact a:hover,a#nextPost,a#prevPost,
+      #footer #company-information .information-block a:hover,
+      #footer #credit a:hover,#pagination a.current,a,
+      #header h1 a:hover,#header #navigation a:hover,
+      #scrollUp,.entry .details .information a:hover {
+      color:{color:1st Color}
+      }
+      #header h1 a,#header #navigation a,
+      #header span#responsive-menu,#pagination a,
+      #footer #company-information .information-block,
+      #footer #company-information .information-block a,
+      #footer #credit,#footer #credit a, a:hover,
+      .information-container span,.information-container a,
+      .entry .details .information,#credit span.right,
+      .entry .details .information a {
+      color:{color:2nd Color}
+      }
+      .entry .text h2,.entry .text .link a,.entry .text .link span {
+      color:{color:2nd Color} !important
+      }
+      #credit span.left,#scrollUp:hover,.quote,.entry .odd,
+      #header #navigation a:hover,#pagination a:hover,#dc-tooltip,
+      #footer #company-information .information-block a,
+      #footer #company-information .information-block a:hover,
+      .entry a.zoom,.entry span.like-button,.source a:hover,
+      .entry a.permalink-button,.ask,.entry a.reblog-button,
+      .pagestitle span,ul#page li a,.searchbutton {
+      color:{color:3rd Color}
+      }
+      #disqus_thread {
+      color:{color:4th Color}
+      }
+      .source a {
+      color:{color:Body BG}
+      }
+      input[type="text"] {
+      color:{color:Body Color} !important
+      }
+      .dc_bullets {
+      display:{select:Slider Bullets Nav};
+      }
+      .entry a.zoom,.entry span.like-button,
+      .entry a.permalink-button,.entry a.reblog-button {
+      border:2px solid {color:Border}
+      }
+      div.about {
+      border:1px solid {color:Border}
+      }
+      .searchbutton,.searchinput {
+      border:1px solid {color:1st BG}
+      }
+      .entry .details,
+      #footer {
+      border-top:1px solid {color:Border}
+      }
+      ol.notes .note {
+      border-bottom:1px solid {color:Border}
+      }
+      #pagination a {
+      border-right:1px solid {color:Border}
+      }
+      #pagination a:first-child {
+      border-left:1px solid {color:Border}
+      }
+      blockquote {
+      border-left:2px solid {color:Border}
+      }
+      .about::before{
+      border-bottom:8px solid {color:2nd BG}
+      }
+      .about::after{
+      border-bottom:7px solid {color:2nd BG}
+      }
+      .source {
+      border-top:1px solid {color:2nd BG}
+      }
+      .entry,.perma-container,#dc-tooltip {
+      box-shadow:0 5px 5px -5px {color:Post Shadow};
+      -moz-box-shadow:0 5px 5px -5px {color:Post Shadow};
+      -webkit-box-shadow:0 5px 5px -5px {color:Post Shadow}
+      }
+      #header,div.about {
+      box-shadow:0 5px 5px -5px {color:Header Shadow};
+      -moz-box-shadow:0 5px 5px -5px {color:Header Shadow};
+      -webkit-box-shadow:0 5px 5px -5px {color:Header Shadow}
+      }
+      .entry {
+      margin:{select:Use Post Margin};
+      border:{select:Use Post Border}px solid {color:Border}
+      }
+      ::-webkit-scrollbar {
+      background:{color:1st BG};
+      width:{select:Scrollbar Width};
+      height:0
+      }
+      ::-webkit-scrollbar-thumb {
+      background:{color:2nd BG}
+      }
+      @media screen and (max-width:700px) {
+      #header #navigation {
+      background:{color:2nd BG}
+      }
+      #header #navigation a {
+      color:{color:3rd Color};
+      background:{color:3rd BG};
+      border-bottom:1px solid {color:3rd Color}
+      }
+      #header #navigation a:hover {
+      background:{color:Header Shadow}
+      }
+      }
+      @media screen and (max-width:650px) {
+      #navigation::before {
+      border-bottom:8px solid {color:3rd Color}
+      }
+      }
+      {CustomCSS}
+    </style>{block:Hide}
+    <meta name="color:Body BG" content="#eee" />
+    <meta name="color:Body Color" content="#888" />
+    <meta name="color:Border" content="#ddd" />
+    <meta name="color:Header Shadow" content="#999" />
+    <meta name="color:Header Title Shadow" content="#333" />
+    <meta name="color:Post Shadow" content="#333" />
+    <meta name="color:1st BG" content="#bbb" />
+    <meta name="color:2nd BG" content="#fff" />
+    <meta name="color:3rd BG" content="#ccc" />
+    <meta name="color:4th BG" content="#333" />
+    <meta name="color:1st Color" content="#bbb" />
+    <meta name="color:2nd Color" content="#999" />
+    <meta name="color:3rd Color" content="#fff" />
+    <meta name="color:4th Color" content="#777" />
+    <meta name="select:Font Body" content="Baskerville,'Times New Roman',Times,serif" title="Baskerville" />
+    <meta name="select:Font Body" content="Verdana,Geneva,Tahoma,sans-serif" title="Verdana" />
+    <meta name="select:Font Body" content="Palatino,'Palatino LT STD','Palatino Linotype','Book Antiqua',Georgia,serif" title="Palatino" />
+    <meta name="select:Font Body" content="'Helvetica Neue',Arial,Helvetica,sans-serif" title="Helvetica Neue" />
+    <meta name="select:Font Body" content="Futura,'Century Gothic',AppleGothic,sans-serif" title="Century Gothic" />
+    <meta name="select:Font Body" content="'Courier New',Courier,monospace" title="Courier New" />
+    <meta name="select:Font Body" content="'Arial Narrow',Arial,'Helvetica Condensed',Helvetica,sans-serif" title="Arial Narrow" />
+    <meta name="select:Font Body" content="'Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',sans-serif" title="Trebuchet MS" />
+    <meta name="select:Font Body" content="Consolas,monaco,monospace" title="Consolas" />
+    <meta name="select:Font Body" content="'Lucida Sans','Lucida Grande','Lucida Sans Unicode',sans-serif" title="Lucida Sans" />
+    <meta name="select:Font Title" content="Bevan" title="Bevan" />
+    <meta name="select:Font Title" content="Audiowide" title="Audiowide" />
+    <meta name="select:Font Title" content="Pacifico" title="Pacifico" />
+    <meta name="select:Font Title" content="Lobster" title="Lobster" />
+    <meta name="select:Font Title" content="Monoton" title="Monoton" />
+    <meta name="select:Font Title" content="Unlock" title="Unlock" />
+    <meta name="select:Font Title" content="Frijole" title="Frijole" />
+    <meta name="select:Font Title" content="Eater" title="Eater" />
+    <meta name="select:Font Title" content="Lemon" title="Lemon" />
+    <meta name="select:Font Title" content="Arbutus" title="Arbutus" />
+    <meta name="select:Font Title" content="Wallpoet" title="Wallpoet" />
+    <meta name="select:Font Title" content="Fascinate" title="Fascinate" />
+    <meta name="select:Font Title" content="Plaster" title="Plaster" />
+    <meta name="select:Font Title" content="Kavoon" title="Kavoon" />
+    <meta name="select:Slide Effect" content="fade" title="Fade" />
+    <meta name="select:Slide Effect" content="stack" title="Stack" />
+    <meta name="select:Slide Effect" content="rotate" title="Rotate" />
+    <meta name="select:Slide Effect" content="domino" title="Domino" />
+    <meta name="select:Slide Effect" content="blur" title="Blur" />
+    <meta name="select:Slide Effect" content="cube" title="Cube" />
+    <meta name="select:Slide Effect" content="kenburns" title="Kenburns" />
+    <meta name="select:Slide Effect" content="seven" title="Seven" />
+    <meta name="select:Slide Effect" content="null" title="Disable Slide" />
+    <meta name="select:Slider Bullets Nav" content="block" title="Yes" />
+    <meta name="select:Slider Bullets Nav" content="none" title="No" />
+    <meta name="select:Scrollbar Width" content="5px" Title="Small" />
+    <meta name="select:Scrollbar Width" content="7px" Title="Medium" />
+    <meta name="select:Scrollbar Width" content="10px" Title="Normal" />
+    <meta name="select:Use Post Margin" content="0 5px 10px" Title="Yes" />
+    <meta name="select:Use Post Margin" content="0" Title="No" />
+    <meta name="select:Use Post Border" content="1" Title="Yes" />
+    <meta name="select:Use Post Border" content="0" Title="No" />
+    <meta name="select:Header Transparency" content=".7" Title="Yes" />
+    <meta name="select:Header Transparency" content="1" Title="No" />
+    <meta name="if:Infinite Scrolling" content="0" />
+    <meta name="if:Title Shadow" content="1" />
+    <meta name="if:Google Fonts" content="0" />
+    <meta name="if:Bg Image" content="1" />
+    <meta name="if:Show Slideshow" content="1" />
+    <meta name="if:Show Middle Nav" content="1" />
+    <meta name="if:Show Search" content="1" />
+    <meta name="if:Show About" content="1" />
+    <meta name="if:Show Home" content="1" />
+    <meta name="if:Show Random" content="1" />
+    <meta name="if:Show Archive" content="1" />
+    <meta name="if:Show RSS" content="1" />
+    <meta name="if:Show Submit" content="1" />
+    <meta name="if:Show Ask" content="1" />
+    <meta name="if:Show Pages" content="1" />
+    <meta name="if:Show Footer" content="1" />
+    <meta name="if:Show Post Info" content="1" />
+    <meta name="if:Show Notes And Comments" content="1" />
+    <meta name="if:Show Social Button" content="0" />
+    <meta name="if:Show Custom Logo" content="0" />
+    <meta name="if:Show Custom Desc" content="0" />
+    <meta name="text:Copyright Name" content="" />
+    <meta name="text:Ask Title" content=""/>
+    <meta name="text:Submit Title" content="" />
+    <meta name="text:Twitter Profile Url" content=""  />
+    <meta name="text:Facebook Profile Url" content="" />
+    <meta name="text:Google Plus Profile Url" content="" />
+    <meta name="text:Pinterest Profile Url" content="" />
+    <meta name="text:Instagram Profile Url" content="" />
+    <meta name="text:Github Profile Url" content="" />
+    <meta name="text:Dribble Profile Url" content="" />
+    <meta name="text:Vimeo Profile Url" content="" />
+    <meta name="text:LinkedIn Profile Url" content="" />
+    <meta name="text:Stumbleupon Profile Url" content="" />
+    <meta name="text:LastFM Profile Url" content="" />
+    <meta name="text:Behance Profile Url" content="" />
+    <meta name="text:Spotify Profile Url" content="" />
+    <meta name="text:Skype Profile Url" content="" />
+    <meta name="text:Soundcloud Profile Url" content="" />
+    <meta name="text:Flikr Profile Url" content="" />
+    <meta name="text:Title" content="" />
+    <meta name="text:Specific Title Char" content="" />
+    <meta name="text:Google Analytics ID" content="" />
+    <meta name="text:Disqus Shortname" content="" />
+    <meta name="text:Desc" content="" />
+    <meta name="image:Logo" content="" />
+    <meta name="image:Slide1" content="//static.tumblr.com/1b08a1ef74ba83f8bf3b265884713207/tekiskr/ttdn2fiqa/tumblr_static_valley.jpg" />
+    <meta name="image:Slide2" content="//static.tumblr.com/39a9b0c3cea40d9a331ae84744c1a2f2/tekiskr/Xman2fiqr/tumblr_static_leaf.jpg" />
+    <meta name="image:Slide3" content="//static.tumblr.com/044070a23a274a95813213157e5e2395/tekiskr/4cin2firg/tumblr_static_saarschleife.jpg" />
+    <meta name="image:Slide4" content="//static.tumblr.com/7db748dc7542c83e63e51b794d7d3a78/tekiskr/ZgOn2fis2/tumblr_static_stones.jpg" />
+    <meta name="image:Slide5" content="//static.tumblr.com/0f2a3c26f5aea0e8ef98801350b9a119/tekiskr/Fqnn2fish/tumblr_static_tree.jpg" />
+    <meta name="image:Slide6" content="//static.tumblr.com/24bb00599c9d62b9bf8614352339a24f/tekiskr/lQyn2fit2/tumblr_static_sea.jpg" />
+    <meta name="image:Slide7" content="//static.tumblr.com/87298b062b7efa216783c2dc427e077f/tekiskr/DvRn2fiu2/tumblr_static_sunset.jpg" />
+    <meta name="image:Slide8" content="//static.tumblr.com/d1b184cc1277953dd939428847de9da3/tekiskr/7W9n2fiwb/tumblr_static_reef.jpg" />
+    <meta name="image:Loading" content="//static.tumblr.com/1baca149439a3d6243ce5a5f482f7586/tekiskr/Tc6n0gwb4/tumblr_static_load.gif" />
+    <meta name="image:Background" content="//static.tumblr.com/00f6300bdaa5567ed7a1cb4ad7177df9/tekiskr/Apsmzr0dc/tumblr_static_bg.png" />{/block:Hide}
+    <meta property="og:title" content="{block:IfTitle}{text:Title} &#124; {/block:IfTitle}{Title}{block:PostSummary} &#124; {PostSummary}{/block:PostSummary}{block:SearchPage} &#124; Search results for {SearchQuery}{/block:SearchPage}" />
+    <meta property="og:description" content="{block:IndexPage}{block:Description}{MetaDescription}{/block:Description}{/block:IndexPage}{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{/block:PermalinkPage}" />
+    <meta property="og:type" content="{block:IndexPage}blog{/block:IndexPage}{block:PermalinkPage}{block:Posts}{PostType}{/block:Posts}{/block:PermalinkPage}" />
+    <meta property="og:url" content="{block:IndexPage}{BlogURL}{/block:IndexPage}{block:PermalinkPage}{Permalink}{/block:PermalinkPage}" />
+    <meta property="og:site_name" content="{block:IfShowCustomTitle}{text:Title}{/block:IfShowCustomTitle}{block:IfNotShowCustomTitle}{Title}{/block:IfNotShowCustomTitle}" />
+    <meta property="og:image" content="{PortraitURL-48}" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+<body>
+<div id="loading">
+</div>
+<div id="header">
+    <div class="title" data-coupling="#description">
+	<h1>
+	<a href="{BlogURL}">
+	{block:IfTitle}{text:Title}{/block:IfTitle}{block:IfNotTitle}{Title}{/block:IfNotTitle} </a>
+	</h1>
+	</div>
+	<span id="responsive-menu" class="icon-menu">
+	</span>
+	<div id="navigation">
+		 {block:IfShowHome} <a href="{BlogURL}" title="{lang:Home}">
+		{lang:Home} </a>
+		{/block:IfShowHome}{block:ifshowrandom} <a href="{BlogURL}random" title="{lang:Random post}">
+		{lang:Random} </a>
+		{/block:ifshowrandom}{block:ifshowarchive} <a href="{BlogURL}archive" title="{lang:Browse the archive}">
+		{lang:Archive} </a>
+		{/block:ifshowarchive}{block:IfShowRSS} <a href="{RSS}" title="{lang:RSS feed}">
+		{lang:Feed} </a>
+		{/block:IfShowRSS}{block:IfShowSubmit}{block:SubmissionsEnabled} <a href="{BlogURL}submit" title="{block:IfSubmitTitle}{text:Submit Title}{/block:IfSubmitTitle}{block:IfNotSubmitTitle}{SubmitLabel}{/block:IfNotSubmitTitle}">
+		{block:IfSubmitTitle}{text:Submit Title}{/block:IfSubmitTitle}{block:IfNotSubmitTitle}{SubmitLabel}{/block:IfNotSubmitTitle} </a>
+		{/block:SubmissionsEnabled}{/block:IfShowSubmit}{block:IfShowAsk}{block:AskEnabled} <a href="{BlogURL}ask" title="{block:IfAskTitle}{text:Ask Title}{/block:IfAskTitle}{block:IfNotAskTitle}{AskLabel}{/block:IfNotAskTitle}">
+		{block:IfAskTitle}{text:Ask Title}{/block:IfAskTitle}{block:IfNotAskTitle}{AskLabel}{/block:IfNotAskTitle} </a>{/block:AskEnabled}{/block:IfShowAsk}
+	</div>
+</div>{block:IfShowAbout}{block:IndexPage}
+	<div class="about me{block:IfNotShowSlideshow} no-slide{/block:IfNotShowSlideshow}" id="description" data-coupling="#description">
+		<p align="center">
+			<img src="{block:IfShowCustomLogo}{image:Logo}{/block:IfShowCustomLogo}{block:IfNotShowCustomLogo}{PortraitURL-48}{/block:IfNotShowCustomLogo}" width="48" height="48" alt="{Title}"/>
+		</p>
+		 {block:IfShowCustomDesc}{text:Desc}{/block:IfShowCustomDesc}{block:IfNotShowCustomDesc}
+		<p>
+			 {Description}
+		</p>{/block:IfNotShowCustomDesc}
+	</div>{/block:IndexPage}{/block:IfShowAbout}{block:IfShowSlideshow}{block:IndexPage}
+<div id="diagonal-slider" class="hide">
+	<div class="dc_images">
+		<ul>{block:IfSlide1Image}
+			<li><a href="#"><img src="{image:Slide1}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide1Image}{block:IfSlide2Image}
+			<li><a href="#"><img src="{image:Slide2}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide2Image}{block:IfSlide3Image}
+			<li><a href="#"><img src="{image:Slide3}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide3Image}{block:IfSlide4Image}
+			<li><a href="#"><img src="{image:Slide4}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide4Image}{block:IfSlide5Image}
+			<li><a href="#"><img src="{image:Slide5}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide5Image}{block:IfSlide6Image}
+			<li><a href="#"><img src="{image:Slide6}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide6Image}{block:IfSlide7Image}
+			<li><a href="#"><img src="{image:Slide7}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide7Image}{block:IfSlide8Image}
+			<li><a href="#"><img src="{image:Slide8}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide8Image}
+		</ul>
+	</div>
+	<div class="dc_bullets">
+		<div>
+			{block:IfSlide1Image} <a href="#">1</a>{/block:IfSlide1Image}{block:IfSlide2Image} <a href="#">2</a>{/block:IfSlide2Image}{block:IfSlide3Image} <a href="#">3</a>{/block:IfSlide3Image}{block:IfSlide4Image} <a href="#">4</a>{/block:IfSlide4Image}{block:IfSlide5Image} <a href="#">5</a>{/block:IfSlide5Image}{block:IfSlide6Image} <a href="#">6</a>{/block:IfSlide6Image}{block:IfSlide7Image} <a href="#">7</a>{/block:IfSlide7Image}{block:IfSlide8Image} <a href="#">8</a>{/block:IfSlide8Image}
+		</div>
+	</div>
+</div>{/block:IndexPage}{/block:IfShowSlideshow}{block:IfShowMiddleNav}{block:IndexPage}
+<div id="middle" class="hide">{block:IfShowPages}{block:HasPages}
+    <div class="pages">
+		<h2 class="pagestitle" data-coupling="#pagescontent">
+			<a href="#" title="{lang:Pages}">
+			    <span class="icon-down-open"></span>
+			</a>
+		</h2>
+    </div>{/block:HasPages}{/block:IfShowPages}{block:IfShowSearch}
+    <div class="search">
+		<form action="/search" method="get">
+			<input class="searchinput" type="text" name="q" value="{SearchQuery}" />
+			<input class="searchbutton" type="submit" value="{lang:Search}" />
+		</form>
+    </div>{/block:IfShowSearch}
+</div>{/block:IndexPage}{/block:IfShowMiddleNav}{block:IfShowMiddleNav}{block:IfShowPages}{block:HasPages}{block:IndexPage}
+	<div class="pageslines" id="pagescontent" data-coupling="#pagescontent">
+		<ul id="page">{block:Pages}
+			<li>
+				<a href="{URL}" title="{Label}">
+					{Label}
+				</a>
+			</li>{/block:Pages}
+		</ul>
+	</div>{/block:IndexPage}{/block:HasPages}{/block:IfShowPages}{/block:IfShowMiddleNav}
+<div id="posts">{block:Posts}{block:Answer}
+	<div class="entry" id="{PostID}">
+		<div class="text">
+			<div class="ask">
+				<div class="question">
+					<h3>
+					&#10077; {Question} &#10078; </h3>
+					<div class="source">
+						 {lang:Asked by Asker 2}
+					</div>
+				</div>
+			</div>
+			 {answer}
+		</div>
+		<div class="details">
+			<div class="information">
+				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
+				{NoteCountWithLabel} </a>
+			</div>
+			<div class="buttons">
+				<span title="{lang:Likes}">
+				{LikeButton size="16"} </span>
+				<span title="{lang:Reblogs}">
+				{ReblogButton size="16"} </span>
+			</div>
+		</div>
+	</div>{/block:Answer}{block:Chat}
+	<div class="entry" id="{PostID}">
+		<div class="text">
+			 {block:Title}
+			<h2>
+			{Title} </h2>
+			 {/block:Title}{block:Lines}
+			<div class="{Alt} user_{UserNumber}">
+				 {block:Label}{Label}{/block:Label} {Line}
+			</div>{/block:Lines}
+		</div>
+		<div class="details">
+			<div class="information">
+				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
+				{NoteCountWithLabel} </a>
+			</div>
+			<div class="buttons">
+				<span title="{lang:Likes}">
+				{LikeButton size="16"} </span>
+				<span title="{lang:Reblogs}">
+				{ReblogButton size="16"} </span>
+			</div>
+		</div>
+	</div>{/block:Chat}{block:Link}
+	<div class="entry" id="{PostID}">
+		<div class="text">
+			<div class="link">
+				<a href="{URL}">
+				{Name} </a>
+				<span class="icon-right-open">
+				</span>
+			</div>
+			{block:Description}{Description}{/block:Description}
+		</div>
+		<div class="details">
+			<div class="information">
+				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
+				{NoteCountWithLabel} </a>
+			</div>
+			<div class="buttons">
+				<span title="{lang:Likes}">
+				{LikeButton size="16"} </span>
+				<span title="{lang:Reblogs}">
+				{ReblogButton size="16"} </span>
+			</div>
+		</div>
+	</div>{/block:Link}{block:Text}
+	<div class="entry" id="{PostID}">
+		<div class="text">
+			 {block:Title}
+			<h2>
+			{Title} </h2>
+			 {/block:Title}{Body}
+		</div>
+		<div class="details {block:PermalinkPagination}show{/block:PermalinkPagination}{block:PermalinkPage}hide{/block:PermalinkPage}">
+			<div class="information">
+				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
+				{NoteCountWithLabel} </a>
+			</div>
+			<div class="buttons">
+				<span title="{lang:Likes}">
+				{LikeButton size="16"} </span>
+				<span title="{lang:Reblogs}">
+				{ReblogButton size="16"} </span>
+			</div>
+		</div>
+	</div>{/block:Text}{block:Quote}
+	<div class="entry" id="{PostID}">
+		<div class="text">
+			<div class="quote">
+				<h3>
+				&#10077; {Quote} &#10078; </h3>
+				<div class="source">
+					 &mdash; {Source}
+				</div>
+			</div>
+		</div>
+		<div class="details">
+			<div class="information">
+				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
+				{NoteCountWithLabel} </a>
+			</div>
+			<div class="buttons">
+				<span title="{lang:Likes}">
+				{LikeButton size="16"} </span>
+				<span title="{lang:Reblogs}">
+				{ReblogButton size="16"} </span>
+			</div>
+		</div>
+	</div>{/block:Quote}{block:Photo}
+	<div class="entry no-border" id="{PostID}">
+	    {block:IndexPage}{block:LinkURL} <a href="{LinkURL}">{/block:LinkURL}
+		<div class="overlay" title="{lang:TimeAgo with NoteCount notes and PlayCount plays}">
+		</div>
+		 {block:LinkURL} </a>{/block:LinkURL}
+		 <span class="like-button" title="{lang:Likes}">
+		{LikeButton size="14" color="white"} </span>
+		<a href="{Reblogurl}" class="reblog-button" title="{lang:Reblogs}">
+		 <span class="icon-retweet">
+		 </span>
+		</a>
+		<a href="{permalink}" class="permalink-button" title="{lang:Permalink for this post}">
+		 <span class="icon-link">
+		 </span>
+		</a>
+		<a href="{PhotoURL-1280}" class="cinthya zoom" title="{lang:Click for high-res photo}">
+		 <span class="icon-export">
+		 </span>
+		</a>{/block:IndexPage}
+		<div class="photo">
+			 {LinkOpenTag} <img src="{block:IndexPage}{PhotoURL-250}{/block:IndexPage}{block:PermalinkPage}{PhotoURL-500}{/block:PermalinkPage}" width="{block:IndexPage}{PhotoWidth-250}{/block:IndexPage}{block:PermalinkPage}{PhotoWidth-500}{/block:PermalinkPage}" height="{block:IndexPage}{PhotoHeight-250}{/block:IndexPage}{block:PermalinkPage}{PhotoHeight-500}{/block:PermalinkPage}" alt="{PhotoAlt}">{LinkCloseTag}
+		</div>{block:permalinkpage}{block:Caption}
+		<div class="post-captions">
+			 {Caption}
+		</div>{/block:Caption}
+		<div class="details extra-padding">
+			<div class="information">
+				<a href="//{name}.tumblr.com/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}" title="{lang:Show all posts made on this day}">
+				{TimeAgo} </a>
+			</div>
+			<div class="buttons">
+				<span title="{lang:Likes}">
+				{LikeButton size="16"} </span>
+				<span title="{lang:Reblogs}">
+				{ReblogButton size="16"} </span>
+			</div>
+		</div>{/block:permalinkpage}
+	</div>{/block:Photo}{block:Photoset}
+	<div class="entry" id="{PostID}">
+		<div class="photo">
+			 {block:IndexPage}
+			<div class="photoset">
+				 {block:Photos} <a href="{PhotoURL-1280}" class="cinthya" title="{lang:Click for high-res photo}">
+				<img src="{block:IndexPage}{PhotoURL-250}{/block:IndexPage}{block:PermalinkPage}{PhotoURL-500}{/block:PermalinkPage}" width="{block:IndexPage}{PhotoWidth-250}{/block:IndexPage}{block:PermalinkPage}{PhotoWidth-500}{/block:PermalinkPage}" height="{block:IndexPage}{PhotoHeight-250}{/block:IndexPage}{block:PermalinkPage}{PhotoHeight-500}{/block:PermalinkPage}" alt="{PhotoAlt}">
+				</a> {/block:Photos}
+			</div>
+			<div class="details">
+				<div class="information">
+					<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
+					{NoteCountWithLabel} </a>
+				</div>
+				<div class="buttons">
+					<span title="{lang:Likes}">
+					{LikeButton size="16"} </span>
+					<span title="{lang:Reblogs}">
+					{ReblogButton size="16"} </span>
+				</div>
+			</div>{/block:IndexPage}{block:permalinkpage}
+			<div class="responsive-level-1">
+				 {Photoset-700}
+			</div>
+			<div class="responsive-level-2">
+				 {Photoset-500}
+			</div>
+			<div class="responsive-level-3">
+				 {Photoset-250}
+			</div>
+			 {/block:permalinkpage} </a>
+		</div>
+	</div>{/block:Photoset}{block:Audio}
+	<div class="entry" id="{PostID}">
+		<div class="media">{block:AudioPlayer} 
+		    <div align="center">
+		        <span title="{block:Artist}{Artist}{/block:Artist} &mdash; {block:TrackName}{TrackName}{/block:TrackName}">
+		            {AudioPlayerWhite}
+		        </span>
+		    </div>{/block:AudioPlayer}{block:AlbumArt}
+		        <a href="{AlbumArtURL}" class="cinthya" title="{lang:TimeAgo with NoteCount notes and PlayCount plays}">
+		            <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist} &mdash; {block:TrackName}{TrackName}{/block:TrackName}" width="500" height="500" />
+		        </a>{/block:AlbumArt}
+		</div>{block:permalinkpage}{block:Caption}
+		<div class="post-captions">
+			 {Caption}
+		</div>{/block:Caption}{/block:permalinkpage}
+		<div class="details extra-padding">
+			<div class="information">
+				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
+				{NoteCountWithLabel} </a>
+			</div>
+			<div class="buttons">
+				<span title="{lang:Likes}">
+				{LikeButton size="16"} </span>
+				<span title="{lang:Reblogs}">
+				{ReblogButton size="16"} </span>
+			</div>
+		</div>
+	</div>{/block:Audio}{block:Video}
+	<div class="entry" id="{PostID}">
+		<div class="media">
+			 {block:IndexPage}{VideoEmbed-250}{/block:IndexPage}{block:PermalinkPage}{VideoEmbed-700}{/block:PermalinkPage}
+		</div>{block:permalinkpage}{block:Caption}
+		<div class="post-captions">
+			 {Caption}
+		</div>{/block:Caption}{/block:permalinkpage}
+		<div class="details extra-padding">
+			<div class="information">
+				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
+				{NoteCountWithLabel} </a>
+			</div>
+			<div class="buttons">
+				<span title="{lang:Likes}">
+				{LikeButton size="16"} </span>
+				<span title="{lang:Reblogs}">
+				{ReblogButton size="16"} </span>
+			</div>
+		</div>
+	</div>{/block:Video}{block:PermalinkPagination}{block:IfShowPostInfo}
+	<div class="perma-container information-container show">
+		 {block:ContentSource}
+		<div id="tags">
+			<span class="icon-link">
+			</span>
+			<strong>
+			{lang:Source}:</strong>
+			<br/>
+			<a href="{SourceURL}" title="{lang:Originally from ReblogRootName}">
+			{SourceTitle} </a>
+		</div>
+			<br/>{/block:ContentSource}{block:RebloggedFrom}
+		<div id="tags">
+			<span class="icon-retweet">
+			</span>
+			<strong>
+			{lang:Reblogged from}:</strong>
+			<br/>
+			<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}">
+			{ReblogParentName} </a>
+		</div>{/block:RebloggedFrom}
+			<br/>{/block:RebloggedFrom}{block:HasTags}
+		<div id="tags">
+			<span class="icon-tag">
+			</span>
+			<strong>
+			{lang:Tags}:</strong>
+			<br/>{block:Tags} <a href="{TagURL}" title="{lang:Tagged with} {Tag}">
+			#{Tag} </a>{/block:Tags}
+		</div>{/block:HasTags}
+	</div>{/block:IfShowPostInfo}{block:IfShowNotesAndComments}
+	<div class="perma-container">{block:PostNotes}
+		<h2>
+		{NoteCountWithLabel} </h2>
+		 {PostNotes}{/block:PostNotes}{block:IfDisqusShortname}
+		<div id="disqus_thread">
+		</div>{/block:IfDisqusShortname}
+	</div>{/block:IfShowNotesAndComments}{/block:PermalinkPagination}{/block:Posts}
+</div>
+<div id="pagination">
+	 {block:Pagination}{block:PreviousPage} <a id="prevPage" href="{PreviousPage}" title="{lang:Previous page}">
+	<span class="icon-left-open">
+	</span>
+	</a>
+	{/block:PreviousPage} {block:JumpPagination length="5"} {block:CurrentPage} <a class="current" title="{lang:Page CurrentPage of TotalPages}">
+	{PageNumber} </a>
+	{/block:CurrentPage}{block:JumpPage} <a href="{URL}" title="Page {PageNumber}">
+	{PageNumber} </a>
+	{/block:JumpPage}{/block:JumpPagination}{block:NextPage} <a href="{NextPage}" id="nextPage" title="{lang:Next page}">
+	<span class="icon-right-open">
+	</span>
+	</a>{/block:NextPage}{/block:Pagination}{block:PermalinkPagination}{block:PreviousPost} <a href="{PreviousPost}" id="prevPost" title="{lang:Prev post}">
+	<span class="icon-right-open">
+	</span>
+	</a>
+	{/block:PreviousPost}{block:NextPost} <a href="{NextPost}" id="nextPost" title="{lang:Next post}">
+	<span class="icon-left-open">
+	</span>
+	</a>{/block:NextPost}{/block:PermalinkPagination}
+</div>{block:IfShowFooter}
+<div id="footer">
+	<div id="company-information">
+		<div class="information-block">
+			 {block:IfShowSocialButton}{block:IndexPage}{block:IfTwitterProfileURL} <a title="{lang:Follow me} on Twitter" class="twitter" href="{text:Twitter Profile URL}" target="_blank">
+	            <span class="icon-twitter">
+	            </span>
+			</a>
+			{/block:IfTwitterProfileURL}{block:IfFacebookProfileURL} <a title="{lang:Follow me} on Facebook" class="facebook" href="{text:Facebook Profile URL}" target="_blank">
+	            <span class="icon-facebook">
+	            </span>
+			</a>
+			{/block:IfFacebookProfileURL}{block:IfGooglePlusProfileURL} <a title="{lang:Follow me} on G+" class="google" href="{text:Google Plus Profile URL}" target="_blank">
+	            <span class="icon-gplus">
+	            </span>
+			</a>
+			{/block:IfGooglePlusProfileURL}{block:IfPinterestProfileURL} <a title="{lang:Follow me} on Pinterest" class="pinterest" href="{text:Pinterest Profile URL}" target="_blank">
+	            <span class="icon-pinterest">
+	            </span>
+			</a>
+			{/block:IfPinterestProfileURL}{block:IfInstagramProfileURL} <a title="{lang:Follow me} on Instagram" class="instagram" href="{text:Instagram Profile URL}" target="_blank">
+	            <span class="icon-instagram">
+	            </span>
+			</a>
+			{/block:IfInstagramProfileURL}{block:IfGithubProfileURL} <a title="{lang:Follow me} on Github" class="github" href="{text:Github Profile URL}" target="_blank">
+	            <span class="icon-github">
+	            </span>
+			</a>{/block:IfGithubProfileURL}{block:IfDribbleProfileURL}
+			<a title="{lang:Follow me} on Dribble" class="dribble" href="{text:Dribble Profile URL}" target="_blank">
+	            <span class="icon-dribbble">
+	            </span>
+			</a>
+			{/block:IfDribbleProfileURL}{block:IfVimeoProfileURL} <a title="{lang:Follow me} on Vimeo" class="vimeo" href="{text:Vimeo Profile URL}" target="_blank">
+	            <span class="icon-vimeo">
+	            </span>
+			</a>
+			{/block:IfVimeoProfileURL}{block:IfLinkedInProfileURL} <a title="{lang:Follow me} on LinkedIn" class="linkedin" href="{text:LinkedIn Profile URL}" target="_blank">
+	            <span class="icon-linkedin">
+	            </span>
+			</a>
+			{/block:IfLinkedInProfileURL}{block:IfFlikrProfileURL} <a title="{lang:Follow me} on Flickr" class="flickr" href="{text:Flickr Profile URL}" target="_blank">
+	            <span class="icon-flickr">
+	            </span>
+			</a>
+			{/block:IfFlikrProfileURL}{block:IfSkypeProfileURL} <a title="{lang:Follow me} on Skype" class="skype" href="{text:Skype Profile URL}" target="_blank">
+	            <span class="icon-skype">
+	            </span>
+			</a>
+			{/block:IfSkypeProfileURL}{block:IfStumbleuponProfileURL} <a title="{lang:Follow me} on Stumbleupon" class="stumbleupon" href="{text:Stumbleupon Profile URL}" target="_blank">
+	            <span class="icon-stumbleupon">
+	            </span>
+			</a>
+			{/block:IfStumbleuponProfileURL}{block:IfLastFMProfileURL} <a title="{lang:Follow me} on LastFM" class="lastfm" href="{text:LastFM Profile URL}" target="_blank">
+	            <span class="icon-lastfm">
+	            </span>
+			</a>
+			{/block:IfLastFMProfileURL}{block:IfBehanceProfileURL} <a title="{lang:Follow me} on Behance" class="behance" href="{text:Behance Profile URL}" target="_blank">
+	            <span class="icon-behance">
+	            </span>
+			</a>
+			{/block:IfBehanceProfileURL}{block:IfSpotifyProfileURL} <a title="{lang:Follow me} on Spotify" class="spotify" href="{text:Spotify Profile URL}" target="_blank">
+	            <span class="icon-spotify">
+	            </span>
+			</a>
+			{/block:IfSpotifyProfileURL}{block:IfSoundcloudProfileURL} <a title="{lang:Follow me} on Soundcloud" class="soundcloud" href="{text:Soundcloud URL}" target="_blank">
+	            <span class="icon-soundcloud">
+	            </span>
+			</a>{/block:IfSoundcloudProfileURL}{/block:IndexPage}{block:PermalinkPage} <span class="no-social"></span>{/block:PermalinkPage}{/block:IfShowSocialButton}{block:IfNotShowSocialButton} <span class="no-social"></span>{/block:IfNotShowSocialButton}
+		</div>
+	</div>
+	<div id="credit">
+		<a href="{BlogURL}" title="Copyright &copy; {CopyrightYears} {block:IfNotCopyrightName}{name}{block:IfNotCopyrightName}{block:IfCopyrightName}{text:Copyright Name}{/block:IfCopyrightName}. All rights reserved.">
+		<span class="left">
+		{block:IfNotCopyrightName}{name}{block:IfNotCopyrightName}{block:IfCopyrightName}{text:Copyright Name}{/block:IfCopyrightName} </span>
+		<span class="right">
+		Design </span>
+		</a>
+	</div>
+</div>{/block:IfShowFooter}
+    <script src="//static.tumblr.com/tekiskr/Vg4n2nz3g/jquery.min.js"></script>
+    <script>{block:ifDisqusShortname}{block:PermalinkPagination}
+      var disqus_shortname = '{text:Disqus Shortname}';{/block:PermalinkPagination}{/block:ifDisqusShortname}{block:IfShowSlideshow}{block:IndexPage}
+      var delt = "{select:Slide Effect}";{/block:IndexPage}{/block:IfShowSlideshow}
+      var transparency = {select:Header Transparency};
+      (function (f, a) {
+              var e, b = f.getElementsByTagName(a)[0],
+                  d = f.createDocumentFragment(),
+                  c = function (g, h) {
+                      if (f.getElementById(h)) {
+                          return
+                      }
+                      e = f.createElement(a);
+                      e.src = g;
+                      e.async = true;
+                      h && (e.id = h);
+                      d.appendChild(e)
+                  };{block:IndexPage}
+          c('//static.tumblr.com/tekiskr/FV9n2nz48/masonry.min.js');{/block:IndexPage}{block:ifinfinitescrolling}{block:IndexPage}
+          c('//static.tumblr.com/tekiskr/gwjn2nz4x/infinite.min.js');{/block:IndexPage}{/block:ifinfinitescrolling}{block:IfShowSlideshow}{block:IndexPage}
+          c('//static.tumblr.com/tekiskr/PY7n2nz5l/slider.min.js');{/block:IndexPage}{/block:IfShowSlideshow}
+          c('//static.tumblr.com/tekiskr/Bzrn2nz66/plugin.min.js');
+          c('//static.tumblr.com/tekiskr/4NUn2o66l/script.min.js');{block:IfShowNotesAndComments}{block:ifDisqusShortname}{block:PermalinkPagination}
+          c('//go.disqus.com/embed.js');{/block:PermalinkPagination}{/block:ifDisqusShortname}{/block:IfShowNotesAndComments}{block:ifGoogleAnalyticsID}
+          c('//www.google-analytics.com/ga.js', 'ga');{/block:ifGoogleAnalyticsID}
+          b.parentNode.insertBefore(d, b)
+      }(document, "script"));{block:ifGoogleAnalyticsID}
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{text:Google Analytics ID}']);
+      _gaq.push(['_trackPageview']);{/block:ifGoogleAnalyticsID}
+    </script>
+  </body>
+</html>
