@@ -1,8 +1,8 @@
 Diagonal Noise
 =============
-<img src="http://static.tumblr.com/tekiskr/M3Zmum24i/01.png" width="630" height="450" alt="Infinite Grid" />
+<img src="//31.media.tumblr.com/themes/screenshots/1s4m1nj/9c67ee4e7fb5918146274ea6559ade70.png" width="630" height="450" alt="Infinite Grid" />
 
-Infinite Grid is a responsive tumblr theme which supported all tumblr post type and was created with Twitter Bootstrap as its base.
+Diagonal Noise theme is a responsive minimalist Tumblr grid theme which supported all tumblr post type.
 
 Overview
 =============
@@ -49,7 +49,7 @@ d. <a target="_blank"  href="//github.com/desandro/masonry">Masonry</a> by Desan
 
 e. <a target="_blank"  href="//github.com/paulirish/infinite-scroll">Infinite Scroll</a> by Paul Irish &amp; Luke Shumard.
 
-f. <a target="_blank"  href="http://manos.malihu.gr/style-my-tooltips-jquery-plugin/">Style-my-tooltips</a> by Manos Malihu
+f. <a target="_blank"  href="http://manos.malihu.gr/style-my-tooltips-jquery-plugin/">Style my Tooltips</a> by Manos Malihu
 
 g. <a target="_blank"  href="//github.com/jackmoore/colorbox">Colorbox</a> by Jack Moore.
 
