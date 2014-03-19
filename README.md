@@ -15,7 +15,7 @@ Features
 Readers are given a Grid with lightbox view, allowing them to enjoy your work as a cascading reel or an all-at-once tiled spread. Views can be toggled by using zoom icons in the top-right corner.
 
 2. <b>Slideshow Images</b><br/>
-This theme build with slideshow support and 9 slideshow effecs, you can enable the slideshow image and slideshow effects features for header by set up with your favor image in the cuztomization page.
+This theme build with slideshow support and 8 slideshow effecs, you can enable the slideshow image and slideshow effects features for header by set up with your favor image in the cuztomization page.
 
 3. <b>Pagination Style</b><br/>
 It build with infinite scroll and jump page pagination support, you can enable this features by set up with your favor pagination style in your cuztomization page.
