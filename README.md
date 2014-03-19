@@ -1,6 +1,6 @@
 Diagonal Noise
 =============
-<img src="//31.media.tumblr.com/themes/screenshots/1s4m1nj/9c67ee4e7fb5918146274ea6559ade70.png" width="630" height="450" alt="Infinite Grid" />
+<img src="http//31.media.tumblr.com/themes/screenshots/1s4m1nj/9c67ee4e7fb5918146274ea6559ade70.png" width="630" height="450" alt="Diagonal Noise" />
 
 Diagonal Noise theme is a responsive minimalist Tumblr grid theme which supported all tumblr post type.
 
