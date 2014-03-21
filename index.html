@@ -11,7 +11,7 @@
                                              
 =======================================================================
    Diagonal Noise
-   Build: Mar 19th, 2014
+   Build: Mar 23th, 2014
    By: Dinata Daniel
 =======================================================================
 -->
@@ -28,12 +28,12 @@
     <link rel="apple-touch-icon-precomposed" href="{PortraitURL-64}" />
     <link rel="canonical" href="{block:IndexPage}{BlogURL}{/block:IndexPage}{block:PermalinkPage}{Permalink}{/block:PermalinkPage}" />
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family={block:IfGoogleFonts}{select:Font Title}|{/block:IfGoogleFonts}Faster+One{block:IfSpecificTitleChar}&amp;text={text:Specific Title Char}{/block:IfSpecificTitleChar}" />
-    <link rel="stylesheet" href="//static.tumblr.com/kjm4i1z/9CVn2sfpj/style.min.css" />{block:IfShowSlideshow}{block:IndexPage}
+    <link rel="stylesheet" href="//static.tumblr.com/kjm4i1z/EYJn2sprs/style.min.css" />{block:IfShowSlideshow}{block:IndexPage}
     <link rel="stylesheet" href="//static.tumblr.com/tekiskr/EuQn2nz0z/slider.min.css" />{/block:IndexPage}{/block:IfShowslideShow}
     <!--[if IE 7]>
     <link rel="stylesheet" href="//static.tumblr.com/tekiskr/g0Fn2nyzh/ie7.min.css" />
     <![endif]-->{block:PermalinkPage}
-    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/k0Un2nz0d/permalink.min.css" />{/block:PermalinkPage}
+    <link rel="stylesheet" href="//static.tumblr.com/kjm4i1z/nAwn2srf2/permalink.min.css" />{/block:PermalinkPage}
     <style type="text/css">
       body {
       font:.8em/160% {select:Font Body};
@@ -566,7 +566,7 @@
 			 {block:IndexPage}
 			<div class="photoset">
 				 {block:Photos} <a href="{PhotoURL-1280}" class="cinthya" title="{lang:Click for high-res photo}">
-				<img src="{block:IndexPage}{PhotoURL-250}{/block:IndexPage}{block:PermalinkPage}{PhotoURL-500}{/block:PermalinkPage}" width="{block:IndexPage}{PhotoWidth-250}{/block:IndexPage}{block:PermalinkPage}{PhotoWidth-500}{/block:PermalinkPage}" height="{block:IndexPage}{PhotoHeight-250}{/block:IndexPage}{block:PermalinkPage}{PhotoHeight-500}{/block:PermalinkPage}" alt="{PhotoAlt}">
+				<img src="{PhotoURL-250}" width="{PhotoWidth-250}{/block:PermalinkPage}" height="{PhotoHeight-250}" alt="{PhotoAlt}">
 				</a> {/block:Photos}
 			</div>
 			<div class="details">
@@ -581,15 +581,36 @@
 					{ReblogButton size="16"} </span>
 				</div>
 			</div>{/block:IndexPage}{block:permalinkpage}
+			<div class="p-photoset" align="center">
 			<div class="responsive-level-1">
-				 {Photoset-700}
-			</div>
-			<div class="responsive-level-2">
 				 {Photoset-500}
 			</div>
-			<div class="responsive-level-3">
-				 {Photoset-250}
+			<div class="responsive-level-2">
+				 {Photoset-400}
 			</div>
+			<div class="responsive-level-3">
+			<div class="photoset">
+				 {block:Photos} <a href="{PhotoURL-1280}" class="cinthya" title="{lang:Click for high-res photo}">
+				<img src="{PhotoURL-250}" width="{PhotoWidth-250}" height="{PhotoHeight-250}" alt="{PhotoAlt}">
+				</a> {/block:Photos}
+			</div>
+			</div>
+			</div>{block:Caption}
+		<div class="post-captions">
+			 {Caption}
+		</div>{/block:Caption}
+		<div class="details extra-padding">
+			<div class="information">
+				<a href="//{name}.tumblr.com/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}" title="{lang:Show all posts made on this day}">
+				{TimeAgo} </a>
+			</div>
+			<div class="buttons">
+				<span title="{lang:Likes}">
+				{LikeButton size="16"} </span>
+				<span title="{lang:Reblogs}">
+				{ReblogButton size="16"} </span>
+			</div>
+		</div>
 			 {/block:permalinkpage} </a>
 		</div>
 	</div>{/block:Photoset}{block:Audio}
