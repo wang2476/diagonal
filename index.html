@@ -28,7 +28,7 @@
     <link rel="apple-touch-icon-precomposed" href="{PortraitURL-64}" />
     <link rel="canonical" href="{block:IndexPage}{BlogURL}{/block:IndexPage}{block:PermalinkPage}{Permalink}{/block:PermalinkPage}" />
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family={block:IfGoogleFonts}{select:Font Title}|{/block:IfGoogleFonts}Faster+One{block:IfSpecificTitleChar}&amp;text={text:Specific Title Char}{/block:IfSpecificTitleChar}" />
-    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/Oubn2nz1k/style.min.css" />{block:IfShowSlideshow}{block:IndexPage}
+    <link rel="stylesheet" href="//static.tumblr.com/kjm4i1z/9CVn2sfpj/style.min.css" />{block:IfShowSlideshow}{block:IndexPage}
     <link rel="stylesheet" href="//static.tumblr.com/tekiskr/EuQn2nz0z/slider.min.css" />{/block:IndexPage}{/block:IfShowslideShow}
     <!--[if IE 7]>
     <link rel="stylesheet" href="//static.tumblr.com/tekiskr/g0Fn2nyzh/ie7.min.css" />
@@ -273,6 +273,7 @@
     <meta name="if:Show Post Info" content="1" />
     <meta name="if:Show Notes And Comments" content="1" />
     <meta name="if:Show Social Button" content="0" />
+    <meta name="if:Show Social Likes" content="1" />
     <meta name="if:Show Custom Logo" content="0" />
     <meta name="if:Show Custom Desc" content="0" />
     <meta name="text:Copyright Name" content="" />
@@ -354,7 +355,14 @@
 		 {block:IfShowCustomDesc}{text:Desc}{/block:IfShowCustomDesc}{block:IfNotShowCustomDesc}
 		<p>
 			 {Description}
-		</p>{/block:IfNotShowCustomDesc}
+		</p>{/block:IfNotShowCustomDesc}{block:IfShowSocialLikes}
+	<div id="post-about">
+		<div class="social" id="sharing-about">
+			<div class="platform facebook" id="fb-newshare-about"></div>
+			<div class="platform twitter" id="tweet-newshare-about"></div>
+			<div class="platform gplus" id="gplus-newshare-about"></div>
+		</div>
+	</div>{/block:IfShowSocialLikes}
 	</div>{/block:IndexPage}{/block:IfShowAbout}{block:IfShowSlideshow}{block:IndexPage}
 <div id="diagonal-slider" class="hide">
 	<div class="dc_images">
@@ -586,12 +594,13 @@
 		</div>
 	</div>{/block:Photoset}{block:Audio}
 	<div class="entry" id="{PostID}">
-		<div class="media">{block:AudioPlayer} 
-		    <div align="center">
+		<div class="media"> 
+		    <div align="center">{block:AudioPlayer} 
 		        <span title="{block:Artist}{Artist}{/block:Artist} &mdash; {block:TrackName}{TrackName}{/block:TrackName}">
 		            {AudioPlayerWhite}
-		        </span>
-		    </div>{/block:AudioPlayer}{block:AlbumArt}
+		        </span>{/block:AudioPlayer}
+		        {block:AudioEmbed}{block:IndexPage}{AudioEmbed-250}{/block:IndexPage}{block:permalinkpage}{AudioEmbed-640}{/block:permalinkpage}{/block:AudioEmbed}
+		    </div>{block:AlbumArt}
 		        <a href="{AlbumArtURL}" class="cinthya" title="{lang:TimeAgo with NoteCount notes and PlayCount plays}">
 		            <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist} &mdash; {block:TrackName}{TrackName}{/block:TrackName}" width="500" height="500" />
 		        </a>{/block:AlbumArt}
@@ -652,7 +661,7 @@
 			<br/>
 			<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}">
 			{ReblogParentName} </a>
-		</div>{/block:RebloggedFrom}
+		</div>
 			<br/>{/block:RebloggedFrom}{block:HasTags}
 		<div id="tags">
 			<span class="icon-tag">
@@ -661,7 +670,20 @@
 			{lang:Tags}:</strong>
 			<br/>{block:Tags} <a href="{TagURL}" title="{lang:Tagged with} {Tag}">
 			#{Tag} </a>{/block:Tags}
-		</div>{/block:HasTags}
+		</div>
+			<br/>{/block:HasTags}{block:IfShowSocialLikes}
+		<div id="post-{PostID}">
+			<div class="social" id="sharing-{PostID}">
+			    <div class="platform facebook" id="fb-newshare-{PostID}"></div>
+			    <div class="platform twitter" id="tweet-newshare-{PostID}"></div>
+			    <div class="platform gplus" id="gplus-newshare-{PostID}"></div>{block:Photo}
+			    <div class="platform pinterest" id="pin-newshare-{PostID}"></div>
+			        <script>
+			            var media = '{PhotoURL-1280}';
+			        </script>{block:Photo}
+			</div>
+		</div>
+			<br/>{/block:IfShowSocialLikes}
 	</div>{/block:IfShowPostInfo}{block:IfShowNotesAndComments}
 	<div class="perma-container">{block:PostNotes}
 		<h2>
@@ -774,7 +796,11 @@
     <script>{block:ifDisqusShortname}{block:PermalinkPagination}
       var disqus_shortname = '{text:Disqus Shortname}';{/block:PermalinkPagination}{/block:ifDisqusShortname}{block:IfShowSlideshow}{block:IndexPage}
       var delt = "{select:Slide Effect}";{/block:IndexPage}{/block:IfShowSlideshow}
-      var transparency = {select:Header Transparency};
+      var transparency = {select:Header Transparency};{block:IfShowSocialLikes}
+      var blog = '{block:IndexPage}{BlogURL}{/block:IndexPage}{block:PermalinkPagination}{Permalink}{/block:PermalinkPagination}';
+      var title = '{Description}';
+      var name = '{name}';{block:IndexPage}
+      var media = '{PortraitURL-128}';{/block:IndexPage}{/block:IfShowSocialLikes}
       (function (f, a) {
               var e, b = f.getElementsByTagName(a)[0],
                   d = f.createDocumentFragment(),
@@ -792,7 +818,8 @@
           c('//static.tumblr.com/tekiskr/gwjn2nz4x/infinite.min.js');{/block:IndexPage}{/block:ifinfinitescrolling}{block:IfShowSlideshow}{block:IndexPage}
           c('//static.tumblr.com/tekiskr/PY7n2nz5l/slider.min.js');{/block:IndexPage}{/block:IfShowSlideshow}
           c('//static.tumblr.com/tekiskr/Bzrn2nz66/plugin.min.js');
-          c('//static.tumblr.com/tekiskr/4NUn2o66l/script.min.js');{block:IfShowNotesAndComments}{block:ifDisqusShortname}{block:PermalinkPagination}
+          c('//static.tumblr.com/tekiskr/4NUn2o66l/script.min.js');{block:IfShowSocialLikes}
+          c('//static.tumblr.com/kjm4i1z/1vKn2sg0c/social.min.js');{/block:IfShowSocialLikes}{block:IfShowNotesAndComments}{block:ifDisqusShortname}{block:PermalinkPagination}
           c('//go.disqus.com/embed.js');{/block:PermalinkPagination}{/block:ifDisqusShortname}{/block:IfShowNotesAndComments}{block:ifGoogleAnalyticsID}
           c('//www.google-analytics.com/ga.js', 'ga');{/block:ifGoogleAnalyticsID}
           b.parentNode.insertBefore(d, b)
