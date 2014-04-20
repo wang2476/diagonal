@@ -11,7 +11,7 @@
                                              
 =======================================================================
    Diagonal Noise
-   Update: Apr 8th, 2014
+   Update: Apr 21st, 2014
    By: Dinata Daniel
 =======================================================================
 -->
@@ -20,203 +20,71 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,user-scalable=false" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>{block:IfTitle}{text:Title} &#124; {/block:IfTitle}{Title}{block:PostSummary} &#124; {PostSummary}{/block:PostSummary}{block:SearchPage} &#124; Search results for {SearchQuery}{/block:SearchPage}</title>
-    <meta name="description" content="{block:PostSummary}{PostSummary}{/block:PostSummary}{block:Description}{MetaDescription}{/block:Description}" />
-    <link rel="shortcut icon" href="{Favicon}" />
-    <link rel="alternate" type="application/rss+xml" href="{RSS}" />
-    <link rel="apple-touch-icon" href="{PortraitURL-128}" />
-    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-64}" />
-    <link rel="canonical" href="{block:IndexPage}{BlogURL}{/block:IndexPage}{block:PermalinkPage}{Permalink}{/block:PermalinkPage}" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family={block:IfGoogleFonts}{select:Font Title}|{/block:IfGoogleFonts}Faster+One{block:IfSpecificTitleChar}&amp;text={text:Specific Title Char}{/block:IfSpecificTitleChar}" />
-    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/qgDn39xns/style.min.css" />{block:IfShowSlideshow}{block:IndexPage}
-    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/EuQn2nz0z/slider.min.css" />{/block:IndexPage}{/block:IfShowslideShow}
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/g0Fn2nyzh/ie7.min.css" />
-    <![endif]-->{block:PermalinkPage}
-    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/5O3n39vjx/permalink.min.css" />{/block:PermalinkPage}
-    <style type="text/css">
-      body {
-      font:.8em/160% {select:Font Body};
-      color:{color:Body Color};{block:IfBgImage}
-      background-image:url('{image:Background}');
-      background-attachment:fixed;
-      background-repeat:repeat;{/block:IfBgImage}
-      background-color:{color:Body BG};
-      word-wrap:break-word
-      }
-      #loading {
-      background:url('{image:loading}') no-repeat center center
-      }
-      #header h1 a {
-      font-family:{block:IfGoogleFonts}{select:Font Title},{/block:IfGoogleFonts}'Faster One',cursive;{block:IfTitleShadow}
-      text-shadow:4px 4px 4px {color:Header Title Shadow}{/block:IfTitleShadow}
-      }
-      #menu,.entry h2,#footer,#pagination,#navigation {
-      font-family:{select:Font Body}
-      }
-      .entry span.like-button:hover,.entry a.permalink-button:hover,
-      .entry a.reblog-button:hover,.entry a.zoom:hover,#credit span.left,
-      #footer #company-information .information-block a:hover,
-      div.about p img,#dc-tooltip,.searchbutton {
-      background:{color:1st BG}
-      }
-      #menu,#header,div.about,#footer,.entry,.entry .details,
-      .perma-container,#pagination a,#scrollUp,#middle {
-      background:{color:2nd BG}
-      }
-      .entry .overlay,#scrollUp:hover,#header #navigation a:hover,
-      #pagination a:hover,.entry .odd,.ask,.quote,
-      .pagestitle:hover,.pagestitle span,.pageslines {
-      background:{color:3rd BG}
-      }
-      .entry .overlay {
-      background:{color:4th BG}
-      }
-      #credit span.right {
-      background:{color:Border}
-      }
-      ul#page li:hover {
-      background:{color:Header Shadow}
-      }
-      #menu #wrapper #contact a:hover,a#nextPost,a#prevPost,
-      #footer #company-information .information-block a:hover,
-      #footer #credit a:hover,#pagination a.current,a,
-      #header h1 a:hover,#header #navigation a:hover,
-      #scrollUp,.entry .details .information a:hover {
-      color:{color:1st Color}
-      }
-      #header h1 a,#header #navigation a,
-      #header span#responsive-menu,#pagination a,
-      #footer #company-information .information-block,
-      #footer #company-information .information-block a,
-      #footer #credit,#footer #credit a, a:hover,
-      .information-container span,.information-container a,
-      .entry .details .information,#credit span.right,
-      .entry .details .information a {
-      color:{color:2nd Color}
-      }
-      .entry .text h2,.entry .text .link a,.entry .text .link span {
-      color:{color:2nd Color} !important
-      }
-      #credit span.left,#scrollUp:hover,.quote,.entry .odd,
-      #header #navigation a:hover,#pagination a:hover,#dc-tooltip,
-      #footer #company-information .information-block a,
-      #footer #company-information .information-block a:hover,
-      .entry a.zoom,.entry span.like-button,.source a:hover,
-      .entry a.permalink-button,.ask,.entry a.reblog-button,
-      .pagestitle span,ul#page li a,.searchbutton {
-      color:{color:3rd Color}
-      }
-      #disqus_thread {
-      color:{color:4th Color}
-      }
-      .source a {
-      color:{color:Body BG}
-      }
-      input[type="text"] {
-      color:{color:Body Color} !important
-      }
-      .dc_bullets {
-      display:{select:Slider Bullets Nav};
-      }
-      .entry a.zoom,.entry span.like-button,
-      .entry a.permalink-button,.entry a.reblog-button {
-      border:2px solid {color:Border}
-      }
-      div.about {
-      border:1px solid {color:Border}
-      }
-      .searchbutton,.searchinput {
-      border:1px solid {color:1st BG}
-      }
-      .entry .details,
-      #footer {
-      border-top:1px solid {color:Border}
-      }
-      ol.notes .note {
-      border-bottom:1px solid {color:Border}
-      }
-      #pagination a {
-      border-right:1px solid {color:Border}
-      }
-      #pagination a:first-child {
-      border-left:1px solid {color:Border}
-      }
-      blockquote {
-      border-left:2px solid {color:Border}
-      }
-      .about::before{
-      border-bottom:8px solid {color:2nd BG}
-      }
-      .about::after{
-      border-bottom:7px solid {color:2nd BG}
-      }
-      .source {
-      border-top:1px solid {color:2nd BG}
-      }
-      .entry,.perma-container,#dc-tooltip {
-      box-shadow:0 5px 5px -5px {color:Post Shadow};
-      -moz-box-shadow:0 5px 5px -5px {color:Post Shadow};
-      -webkit-box-shadow:0 5px 5px -5px {color:Post Shadow}
-      }
-      #header,div.about {
-      box-shadow:0 5px 5px -5px {color:Header Shadow};
-      -moz-box-shadow:0 5px 5px -5px {color:Header Shadow};
-      -webkit-box-shadow:0 5px 5px -5px {color:Header Shadow}
-      }
-      .entry {
-      margin:{select:Use Post Margin};
-      border:{select:Use Post Border}px solid {color:Border}
-      }
-      ::-webkit-scrollbar {
-      background:{color:1st BG};
-      width:{select:Scrollbar Width};
-      height:0
-      }
-      ::-webkit-scrollbar-thumb {
-      background:{color:2nd BG}
-      }
-      @media screen and (max-width:700px) {
-      #header #navigation {
-      background:{color:2nd BG}
-      }
-      #header #navigation a {
-      color:{color:3rd Color};
-      background:{color:3rd BG};
-      border-bottom:1px solid {color:3rd Color}
-      }
-      #header #navigation a:hover {
-      background:{color:Header Shadow}
-      }
-      }
-      @media screen and (max-width:650px) {
-      #navigation::before {
-      border-bottom:8px solid {color:3rd Color}
-      }
-      }{block:IfFixedFooter}
-      @media screen and (min-width:700px) {{block:IfInfiniteScrolling}
-      #posts {
-      margin:{block:PermalinkPage}0 auto 85px{/block:PermalinkPage}{block:IndexPage}90px auto 80px{/block:IndexPage} !important;
-      }{/block:IfInfiniteScrolling}{block:IfNotInfiniteScrolling}
-      #pagination {
-      margin:-15px auto 20px !important;
-      padding:0 0 70px;
-      }{/block:IfNotInfiniteScrolling}
-      #footer {
-      position:fixed;
-      bottom:0;
-      width:100%;
-      }
-      #infscr-loading {
-      position:fixed !important;
-      bottom:0 !important;
-      margin:0 auto 15px auto !important;
-      z-index:9999999 !important;
-      }
-      }{/block:IfFixedFooter}
-      {CustomCSS}
-    </style>{block:Hide}
+    <title>{block:IfNotTitle}{Title}{/block:IfNotTitle}{block:IfTitle}{text:Title}{/block:IfTitle}{block:PostSummary} &#124; {PostSummary}{/block:PostSummary}{block:SearchPage} &#124; {lang:SearchResultCount results for SearchQuery}{/block:SearchPage}</title>
+    <meta name="description" content="{block:PostSummary}{PostSummary}{/block:PostSummary}{block:Description}{MetaDescription}{/block:Description}" />{block:Hidden}
+    <meta name="select:Layout" content="250px" Title="5 Columns" />
+    <meta name="select:Layout" content="275px" Title="4 Columns" />
+    <meta name="select:Layout" content="350px" Title="3 Columns" />
+    <meta name="select:Layout" content="450px" Title="2 Columns" />
+    <meta name="select:Layout" content="700px" Title="Regular" />
+    <meta name="select:Post Margin" content="0 10px 20px" Title="Far" />
+    <meta name="select:Post Margin" content="0 5px 10px" Title="Medium" />
+    <meta name="select:Post Margin" content="0" Title="Close" />
+    <meta name="select:Slider Type" content="0 auto -5px" Title="With Middle Nav" />
+    <meta name="select:Slider Type" content="4% auto 10%" Title="Without Middle Nav" />
+    <meta name="select:Slider Height" content="240" Title="Short" />
+    <meta name="select:Slider Height" content="360" Title="Medium" />
+    <meta name="select:Slider Height" content="508" Title="Tall" />
+    <meta name="select:Slider Height" content="554" Title="Xtra" />
+    <meta name="select:Slider Width" content="100%" Title="Full" />
+    <meta name="select:Slider Width" content="93%" Title="Large" />
+    <meta name="select:Slider Width" content="86%" Title="Medium" />
+    <meta name="select:Slider Width" content="79%" Title="Small" />
+    <meta name="select:Slider Bullets Nav" content="block" title="Yes" />
+    <meta name="select:Slider Bullets Nav" content="none" title="No" />
+    <meta name="select:Slider Effect" content="fade" title="Fade" />
+    <meta name="select:Slider Effect" content="stack" title="Stack" />
+    <meta name="select:Slider Effect" content="rotate" title="Rotate" />
+    <meta name="select:Slider Effect" content="domino" title="Domino" />
+    <meta name="select:Slider Effect" content="blur" title="Blur" />
+    <meta name="select:Slider Effect" content="cube" title="Cube" />
+    <meta name="select:Slider Effect" content="kenburns" title="Kenburns" />
+    <meta name="select:Slider Effect" content="seven" title="Seven" />
+    <meta name="select:Slider Effect" content="null" title="Disable" />
+    <meta name="select:Scrollbar Width" content="5px" Title="Small" />
+    <meta name="select:Scrollbar Width" content="7px" Title="Medium" />
+    <meta name="select:Scrollbar Width" content="10px" Title="Normal" />
+    <meta name="select:Use Post Border" content="0" Title="No" />
+    <meta name="select:Use Post Border" content="1" Title="Yes" />
+    <meta name="select:Header Transparency" content="1" Title="No" />
+    <meta name="select:Header Transparency" content=".7" Title="Yes" />
+    <meta name="if:Infinite Scrolling" content="0" />
+    <meta name="if:Photo Caption on Hover" content="1" />
+    <meta name="if:Fixed Footer" content="0" />
+    <meta name="if:Title Shadow" content="1" />
+    <meta name="if:Google Fonts" content="0" />
+    <meta name="if:Bg Image" content="1" />
+    <meta name="if:Show Slideshow" content="1" />
+    <meta name="if:Show Caption" content="1" />
+    <meta name="if:Show Middle Nav" content="1" />
+    <meta name="if:Show Search" content="1" />
+    <meta name="if:Show About" content="1" />
+    <meta name="if:Show Home" content="1" />
+    <meta name="if:Show Random" content="1" />
+    <meta name="if:Show Archive" content="1" />
+    <meta name="if:Show RSS" content="1" />
+    <meta name="if:Show Submit" content="1" />
+    <meta name="if:Show Ask" content="1" />
+    <meta name="if:Show Pages" content="1" />
+    <meta name="if:Show Footer" content="1" />
+    <meta name="if:Show Post Info" content="1" />
+    <meta name="if:Show Notes And Comments" content="1" />
+    <meta name="if:Show Social Button" content="0" />
+    <meta name="if:Show Social Likes" content="1" />
+    <meta name="if:Show Custom Logo" content="0" />
+    <meta name="if:Show Custom Desc" content="0" />
     <meta name="color:Body BG" content="#eee" />
+    <meta name="color:Caption Hover BG" content="#fff" />
     <meta name="color:Body Color" content="#888" />
     <meta name="color:Border" content="#ddd" />
     <meta name="color:Header Shadow" content="#999" />
@@ -254,52 +122,19 @@
     <meta name="select:Font Title" content="Fascinate" title="Fascinate" />
     <meta name="select:Font Title" content="Plaster" title="Plaster" />
     <meta name="select:Font Title" content="Kavoon" title="Kavoon" />
-    <meta name="select:Slide Effect" content="fade" title="Fade" />
-    <meta name="select:Slide Effect" content="stack" title="Stack" />
-    <meta name="select:Slide Effect" content="rotate" title="Rotate" />
-    <meta name="select:Slide Effect" content="domino" title="Domino" />
-    <meta name="select:Slide Effect" content="blur" title="Blur" />
-    <meta name="select:Slide Effect" content="cube" title="Cube" />
-    <meta name="select:Slide Effect" content="kenburns" title="Kenburns" />
-    <meta name="select:Slide Effect" content="seven" title="Seven" />
-    <meta name="select:Slide Effect" content="null" title="Disable Slide" />
-    <meta name="select:Slider Bullets Nav" content="block" title="Yes" />
-    <meta name="select:Slider Bullets Nav" content="none" title="No" />
-    <meta name="select:Scrollbar Width" content="5px" Title="Small" />
-    <meta name="select:Scrollbar Width" content="7px" Title="Medium" />
-    <meta name="select:Scrollbar Width" content="10px" Title="Normal" />
-    <meta name="select:Use Post Margin" content="0 5px 10px" Title="Yes" />
-    <meta name="select:Use Post Margin" content="0" Title="No" />
-    <meta name="select:Use Post Border" content="1" Title="Yes" />
-    <meta name="select:Use Post Border" content="0" Title="No" />
-    <meta name="select:Header Transparency" content=".7" Title="Yes" />
-    <meta name="select:Header Transparency" content="1" Title="No" />
-    <meta name="if:Infinite Scrolling" content="0" />
-    <meta name="if:Fixed Footer" content="0" />
-    <meta name="if:Title Shadow" content="1" />
-    <meta name="if:Google Fonts" content="0" />
-    <meta name="if:Bg Image" content="1" />
-    <meta name="if:Show Slideshow" content="1" />
-    <meta name="if:Show Middle Nav" content="1" />
-    <meta name="if:Show Search" content="1" />
-    <meta name="if:Show About" content="1" />
-    <meta name="if:Show Home" content="1" />
-    <meta name="if:Show Random" content="1" />
-    <meta name="if:Show Archive" content="1" />
-    <meta name="if:Show RSS" content="1" />
-    <meta name="if:Show Submit" content="1" />
-    <meta name="if:Show Ask" content="1" />
-    <meta name="if:Show Pages" content="1" />
-    <meta name="if:Show Footer" content="1" />
-    <meta name="if:Show Post Info" content="1" />
-    <meta name="if:Show Notes And Comments" content="1" />
-    <meta name="if:Show Social Button" content="0" />
-    <meta name="if:Show Social Likes" content="1" />
-    <meta name="if:Show Custom Logo" content="0" />
-    <meta name="if:Show Custom Desc" content="0" />
+    <meta name="text:Title" content="" />
+    <meta name="text:Specific Title Char" content="" />
+    <meta name="text:Desc" content="" />
+    <meta name="text:Google Analytics ID" content="" />
+    <meta name="text:Disqus Shortname" content="" />
     <meta name="text:Copyright Name" content="" />
-    <meta name="text:Ask Title" content=""/>
+    <meta name="text:Home Title" content=""/>
+    <meta name="text:Random Title" content=""/>
+    <meta name="text:Archive Title" content=""/>
+    <meta name="text:Feed Title" content=""/>
     <meta name="text:Submit Title" content="" />
+    <meta name="text:Ask Title" content=""/>
+    <meta name="text:Page Title" content="Sub Menu" />
     <meta name="text:Twitter Profile Url" content=""  />
     <meta name="text:Facebook Profile Url" content="" />
     <meta name="text:Google Plus Profile Url" content="" />
@@ -316,11 +151,6 @@
     <meta name="text:Skype Profile Url" content="" />
     <meta name="text:Soundcloud Profile Url" content="" />
     <meta name="text:Flikr Profile Url" content="" />
-    <meta name="text:Title" content="" />
-    <meta name="text:Specific Title Char" content="" />
-    <meta name="text:Google Analytics ID" content="" />
-    <meta name="text:Disqus Shortname" content="" />
-    <meta name="text:Desc" content="" />
     <meta name="image:Logo" content="" />
     <meta name="image:Slide1" content="//static.tumblr.com/1b08a1ef74ba83f8bf3b265884713207/tekiskr/ttdn2fiqa/tumblr_static_valley.jpg" />
     <meta name="image:Slide2" content="//static.tumblr.com/39a9b0c3cea40d9a331ae84744c1a2f2/tekiskr/Xman2fiqr/tumblr_static_leaf.jpg" />
@@ -331,18 +161,253 @@
     <meta name="image:Slide7" content="//static.tumblr.com/87298b062b7efa216783c2dc427e077f/tekiskr/DvRn2fiu2/tumblr_static_sunset.jpg" />
     <meta name="image:Slide8" content="//static.tumblr.com/d1b184cc1277953dd939428847de9da3/tekiskr/7W9n2fiwb/tumblr_static_reef.jpg" />
     <meta name="image:Loading" content="//static.tumblr.com/1baca149439a3d6243ce5a5f482f7586/tekiskr/Tc6n0gwb4/tumblr_static_load.gif" />
-    <meta name="image:Background" content="//static.tumblr.com/00f6300bdaa5567ed7a1cb4ad7177df9/tekiskr/Apsmzr0dc/tumblr_static_bg.png" />{/block:Hide}
-    <meta property="og:title" content="{block:IfTitle}{text:Title} &#124; {/block:IfTitle}{Title}{block:PostSummary} &#124; {PostSummary}{/block:PostSummary}{block:SearchPage} &#124; Search results for {SearchQuery}{/block:SearchPage}" />
-    <meta property="og:description" content="{block:IndexPage}{block:Description}{MetaDescription}{/block:Description}{/block:IndexPage}{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{/block:PermalinkPage}" />
-    <meta property="og:type" content="{block:IndexPage}blog{/block:IndexPage}{block:PermalinkPage}{block:Posts}{PostType}{/block:Posts}{/block:PermalinkPage}" />
-    <meta property="og:url" content="{block:IndexPage}{BlogURL}{/block:IndexPage}{block:PermalinkPage}{Permalink}{/block:PermalinkPage}" />
-    <meta property="og:site_name" content="{block:IfShowCustomTitle}{text:Title}{/block:IfShowCustomTitle}{block:IfNotShowCustomTitle}{Title}{/block:IfNotShowCustomTitle}" />
-    <meta property="og:image" content="{PortraitURL-48}" />
+    <meta name="image:Background" content="//static.tumblr.com/00f6300bdaa5567ed7a1cb4ad7177df9/tekiskr/Apsmzr0dc/tumblr_static_bg.png" />{/block:Hidden}
+    <meta property="og:site_name" content="{Title}" />{block:PermalinkPage}
+    <meta property="og:url" content="{Permalink}" />
+    <meta property="og:type" content="article" />{block:Posts}{block:Text}{block:Title}
+    <meta property="og:title" content="{PlaintextTitle}" />{/block:Title}
+    <meta property="og:description" content="{PlaintextBody}" />{/block:Text}{block:Photo}
+    <meta property="og:image" content="{PhotoURL-500}" />{block:Caption}
+    <meta property="og:description" content="{PlaintextCaption}" />{/block:Caption}{/block:Photo}{block:Photoset}{block:Photos}
+    <meta property="og:image" content="{PhotoURL-500}" />{/block:Photos}{block:Caption}
+    <meta property="og:description" content="{PlaintextCaption}" />{/block:Caption}{/block:Photoset}{block:Quote}
+    <meta property="og:title" content="{PlaintextQuote}" />
+    <meta property="og:description" content="{PlaintextSource}" />
+    <meta property="og:image" content="{PortraitURL-64}" />{/block:Quote}{block:Link}
+    <meta property="og:title" content="{PlaintextName}" />
+    <meta property="og:description" content="{PlaintextDescription}" />
+    <meta property="og:image" content="{PortraitURL-64}" />{/block:Link}{block:Chat}
+    <meta property="og:title" content="{PlaintextTitle}" />
+    <meta property="og:description" content="{block:Lines}{block:Label}{Label}: {/block:Label}{Line} &bull; {/block:Lines}" />
+    <meta property="og:image" content="{PortraitURL-64}" />{/block:Chat}{block:Audio}
+    <meta property="og:title" content="{block:Artist}{Artist} - {/block:Artist}{block:TrackName}{TrackName}{/block:TrackName}" />
+    <meta property="og:description" content="{PlaintextCaption}" />{block:AlbumArt}
+    <meta property="og:image" content="{AlbumArtURL}" />{/block:AlbumArt}{/block:Audio}{block:Video}{block:Caption}
+    <meta property="og:description" content="{PlaintextCaption}" />{/block:Caption}{/block:Video}{block:Answer}
+    <meta property="og:title" content="{PlaintextQuestion}" />
+    <meta property="og:description" content="{PlaintextAnswer}" />
+    <meta property="og:image" content="{PortraitURL-64}" />{/block:Answer}{/block:Posts}{/block:PermalinkPage}{block:IndexPage}
+    <meta property="og:title" content="{Title}" />
+    <meta property="og:type" content="blog" />
+    <meta property="og:description" content="{MetaDescription}" />
+    <meta property="og:image" content="{PortraitURL-64}" />{/block:IndexPage}
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+    <link rel="apple-touch-icon" href="{PortraitURL-128}" />
+    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-64}" />
+    <link rel="canonical" href="{block:IndexPage}{BlogURL}{/block:IndexPage}{block:PermalinkPage}{Permalink}{/block:PermalinkPage}" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family={block:IfGoogleFonts}{select:Font Title}|{/block:IfGoogleFonts}Faster+One{block:IfSpecificTitleChar}&amp;text={text:Specific Title Char}{/block:IfSpecificTitleChar}" />
+    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/s85n4c4ri/style.min.css" />{block:IfShowSlideshow}{block:IndexPage}
+    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/EuQn2nz0z/slider.min.css" />{/block:IndexPage}{/block:IfShowslideShow}
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/g0Fn2nyzh/ie7.min.css" />
+    <![endif]-->{block:PermalinkPage}
+    <link rel="stylesheet" href="//static.tumblr.com/tekiskr/5O3n39vjx/permalink.min.css" />{/block:PermalinkPage}
+    <style type="text/css">
+      body {
+      font:.8em/160% {select:Font Body};
+      color:{color:Body Color};{block:IfBgImage}
+      background-image:url('{image:Background}');
+      background-attachment:fixed;
+      background-repeat:repeat;{/block:IfBgImage}
+      background-color:{color:Body BG};
+      word-wrap:break-word
+      }
+      #loading {
+      background:url('{image:loading}') no-repeat center center
+      }
+      #diagonal-slider {
+      width:{select:Slider Width} !important;
+      height:{select:Slider Height}px !important;
+      margin:{select:Slider Type}
+      }
+      #header h1 a {
+      font-family:{block:IfGoogleFonts}{select:Font Title},{/block:IfGoogleFonts}'Faster One',cursive;{block:IfTitleShadow}
+      text-shadow:4px 4px 4px {color:Header Title Shadow}{/block:IfTitleShadow};
+      letter-spacing:0
+      }
+      #menu,.entry h2,#footer,#pagination,#navigation {
+      font-family:{select:Font Body}
+      }
+      .entry span.like-button:hover,.entry a.permalink-button:hover,
+      .entry a.reblog-button:hover,.entry a.zoom:hover,#credit span.left,
+      #footer #company-information .information-block a:hover,
+      div.about p img,#dc-tooltip,.searchbutton {
+      background:{color:1st BG}
+      }
+      #menu,#header,div.about,#footer,.entry,.entry .details,
+      .perma-container,#pagination a,#scrollUp,#middle {
+      background:{color:2nd BG}
+      }
+      .entry .overlay,#scrollUp:hover,#header #navigation a:hover,
+      #pagination a:hover,.entry .odd,.ask,.quote,
+      .pagestitle:hover,.pagestitle span,.pageslines {
+      background:{color:3rd BG}
+      }
+      .entry .overlay {
+      background:{color:4th BG}
+      }
+      #credit span.right {
+      background:{color:Border}
+      }
+      ul#page li:hover {
+      background:{color:Header Shadow}
+      }
+      body.index .hover-caption {
+      background:{color:Caption Hover BG}
+      }
+      #menu #wrapper #contact a:hover,a#nextPost,a#prevPost,
+      #footer #company-information .information-block a:hover,
+      #footer #credit a:hover,#pagination a.current,
+      a,.buttons > a:hover,#header h1 a:hover,
+      #header #navigation a:hover,#scrollUp,
+      .entry .details .information a:hover {
+      color:{color:1st Color}
+      }
+      #header h1 a,#header #navigation a,
+      #header span#responsive-menu,#pagination a,
+      #footer #company-information .information-block,
+      #footer #company-information .information-block a,
+      #footer #credit,#footer #credit a, a:hover,
+      .information-container span,.information-container a,
+      .entry .details .information,#credit span.right,
+      .entry .details .information a {
+      color:{color:2nd Color}
+      }
+      .entry .text h2,.entry .text .link a,.entry .text .link span {
+      color:{color:2nd Color} !important
+      }
+      #credit span.left,#scrollUp:hover,.quote,.entry .odd,
+      #header #navigation a:hover,#pagination a:hover,#dc-tooltip,
+      #footer #company-information .information-block a,
+      #footer #company-information .information-block a:hover,
+      .entry a.zoom,.entry span.like-button,.source a:hover,
+      .entry a.permalink-button,.ask,.entry a.reblog-button,
+      .pagestitle span,ul#page li a,.searchbutton {
+      color:{color:3rd Color}
+      }
+      #disqus_thread {
+      color:{color:4th Color}
+      }
+      .source a {
+      color:{color:Body BG}
+      }
+      .buttons > a {
+      color:{color:3rd BG}
+      }
+      input[type="text"] {
+      color:{color:Body Color} !important
+      }
+      .dc_bullets {
+      display:{select:Slider Bullets Nav}
+      }
+      .entry a.zoom,.entry span.like-button,
+      .entry a.permalink-button,.entry a.reblog-button {
+      border:2px solid {color:Border}
+      }
+      div.about {
+      border:1px solid {color:Border}
+      }
+      .searchbutton,.searchinput {
+      border:1px solid {color:1st BG}
+      }
+      .entry .details,#footer,
+      body.index .hover-caption > span.bottom {
+      border-top:1px solid {color:Border}
+      }
+      ol.notes .note {
+      border-bottom:1px solid {color:Border}
+      }
+      #pagination a {
+      border-right:1px solid {color:Border}
+      }
+      #pagination a:first-child {
+      border-left:1px solid {color:Border}
+      }
+      blockquote {
+      border-left:2px solid {color:Border}
+      }
+      .about::before{
+      border-bottom:8px solid {color:2nd BG}
+      }
+      .about::after{
+      border-bottom:7px solid {color:2nd BG}
+      }
+      .source {
+      border-top:1px solid {color:2nd BG}
+      }
+      .entry,.perma-container,#dc-tooltip {
+      box-shadow:0 5px 5px -5px {color:Post Shadow};
+      -moz-box-shadow:0 5px 5px -5px {color:Post Shadow};
+      -webkit-box-shadow:0 5px 5px -5px {color:Post Shadow}
+      }
+      #header,div.about {
+      box-shadow:0 5px 5px -5px {color:Header Shadow};
+      -moz-box-shadow:0 5px 5px -5px {color:Header Shadow};
+      -webkit-box-shadow:0 5px 5px -5px {color:Header Shadow}
+      }
+      .entry {
+      margin:{select:Post Margin};
+      border:{select:Use Post Border}px solid {color:Border}
+      }
+      ::-webkit-scrollbar {
+      background:{color:1st BG};
+      width:{select:Scrollbar Width};
+      height:0
+      }
+      ::-webkit-scrollbar-thumb {
+      background:{color:2nd BG}
+      }
+      @media screen and (min-width:700px) {
+      body.index .entry,body.index .entry .media iframe,
+      body.index .entry .overlay,body.index .entry .captions,
+      body.index .hover-caption {
+      width:{select:Layout} !important
+      }{block:IfFixedFooter}{block:IfInfiniteScrolling}
+      #posts {
+      margin:{block:PermalinkPage}0 auto 85px{/block:PermalinkPage}{block:IndexPage}90px auto 80px{/block:IndexPage} !important;
+      }{/block:IfInfiniteScrolling}{block:IfNotInfiniteScrolling}
+      #pagination {
+      margin:-15px auto 20px !important;
+      padding:0 0 70px
+      }{/block:IfNotInfiniteScrolling}
+      #footer {
+      position:fixed;
+      bottom:0;
+      width:100%
+      }
+      #infscr-loading {
+      position:fixed !important;
+      bottom:0 !important;
+      margin:0 auto 15px auto !important;
+      z-index:9999999 !important
+      }{/block:IfFixedFooter}
+      }
+      @media screen and (max-width:700px) {
+      #header #navigation {
+      background:{color:2nd BG}
+      }
+      #header #navigation a {
+      color:{color:3rd Color};
+      background:{color:3rd BG};
+      border-bottom:1px solid {color:3rd Color}
+      }
+      #header #navigation a:hover {
+      background:{color:Header Shadow}
+      }
+      }
+      @media screen and (max-width:650px) {
+      #navigation::before {
+      border-bottom:8px solid {color:3rd Color}
+      }
+      }
+      {CustomCSS}
+    </style>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-<body>
+<body class="{block:IndexPage}index{/block:IndexPage}{block:PermalinkPage}perma{/block:PermalinkPage}">
 <div id="loading">
 </div>
 <div id="header">
@@ -355,14 +420,14 @@
 	<span id="responsive-menu" class="icon-menu">
 	</span>
 	<div id="navigation">
-		 {block:IfShowHome} <a href="{BlogURL}" title="{lang:Home}">
-		{lang:Home} </a>
-		{/block:IfShowHome}{block:ifshowrandom} <a href="{BlogURL}random" title="{lang:Random post}">
-		{lang:Random} </a>
-		{/block:ifshowrandom}{block:ifshowarchive} <a href="{BlogURL}archive" title="{lang:Browse the archive}">
-		{lang:Archive} </a>
-		{/block:ifshowarchive}{block:IfShowRSS} <a href="{RSS}" title="{lang:RSS feed}">
-		{lang:Feed} </a>
+		 {block:IfShowHome} <a href="{BlogURL}" title="{block:IfHomeTitle}{text:Home Title}{/block:IfHomeTitle}{block:IfNotHomeTitle}{lang:Home}{/block:IfNotHomeTitle}">
+		{block:IfHomeTitle}{text:Home Title}{/block:IfHomeTitle}{block:IfNotHomeTitle}{lang:Home}{/block:IfNotHomeTitle} </a>
+		{/block:IfShowHome}{block:ifshowrandom} <a href="{BlogURL}random" title="{block:IfRandomTitle}{text:Random Title}{/block:IfRandomTitle}{block:IfNotRandomTitle}{lang:Random post}{/block:IfNotRandomTitle}">
+		{block:IfRandomTitle}{text:Random Title}{/block:IfRandomTitle}{block:IfNotRandomTitle}{lang:Random}{/block:IfNotRandomTitle} </a>
+		{/block:ifshowrandom}{block:ifshowarchive} <a href="{BlogURL}archive" title="{block:IfArchiveTitle}{text:Archive Title}{/block:IfArchiveTitle}{block:IfNotArchiveTitle}{lang:Browse the archive}{/block:IfNotArchiveTitle}">
+		{block:IfArchiveTitle}{text:Archive Title}{/block:IfArchiveTitle}{block:IfNotArchiveTitle}{lang:Archive}{/block:IfNotArchiveTitle} </a>
+		{/block:ifshowarchive}{block:IfShowRSS} <a href="{RSS}" title="{block:IfFeedTitle}{text:Feed Title}{/block:IfFeedTitle}{block:IfNotFeedTitle}{lang:RSS feed}{/block:IfNotFeedTitle}">
+		{block:IfFeedTitle}{text:Feed Title}{/block:IfFeedTitle}{block:IfNotFeedTitle}{lang:Feed}{/block:IfNotFeedTitle} </a>
 		{/block:IfShowRSS}{block:IfShowSubmit}{block:SubmissionsEnabled} <a href="{BlogURL}submit" title="{block:IfSubmitTitle}{text:Submit Title}{/block:IfSubmitTitle}{block:IfNotSubmitTitle}{SubmitLabel}{/block:IfNotSubmitTitle}">
 		{block:IfSubmitTitle}{text:Submit Title}{/block:IfSubmitTitle}{block:IfNotSubmitTitle}{SubmitLabel}{/block:IfNotSubmitTitle} </a>
 		{/block:SubmissionsEnabled}{/block:IfShowSubmit}{block:IfShowAsk}{block:AskEnabled} <a href="{BlogURL}ask" title="{block:IfAskTitle}{text:Ask Title}{/block:IfAskTitle}{block:IfNotAskTitle}{AskLabel}{/block:IfNotAskTitle}">
@@ -388,14 +453,14 @@
 <div id="diagonal-slider" class="hide">
 	<div class="dc_images">
 		<ul>{block:IfSlide1Image}
-			<li><a href="#"><img src="{image:Slide1}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide1Image}{block:IfSlide2Image}
-			<li><a href="#"><img src="{image:Slide2}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide2Image}{block:IfSlide3Image}
-			<li><a href="#"><img src="{image:Slide3}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide3Image}{block:IfSlide4Image}
-			<li><a href="#"><img src="{image:Slide4}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide4Image}{block:IfSlide5Image}
-			<li><a href="#"><img src="{image:Slide5}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide5Image}{block:IfSlide6Image}
-			<li><a href="#"><img src="{image:Slide6}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide6Image}{block:IfSlide7Image}
-			<li><a href="#"><img src="{image:Slide7}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide7Image}{block:IfSlide8Image}
-			<li><a href="#"><img src="{image:Slide8}" alt="{Title}" width="1280" height="240"/></a></li>{/block:IfSlide8Image}
+			<li><a href="#"><img src="{image:Slide1}" alt="{Title}" width="1280" height="{select:Slider Height}"/></a></li>{/block:IfSlide1Image}{block:IfSlide2Image}
+			<li><a href="#"><img src="{image:Slide2}" alt="{Title}" width="1280" height="{select:Slider Height}"/></a></li>{/block:IfSlide2Image}{block:IfSlide3Image}
+			<li><a href="#"><img src="{image:Slide3}" alt="{Title}" width="1280" height="{select:Slider Height}"/></a></li>{/block:IfSlide3Image}{block:IfSlide4Image}
+			<li><a href="#"><img src="{image:Slide4}" alt="{Title}" width="1280" height="{select:Slider Height}"/></a></li>{/block:IfSlide4Image}{block:IfSlide5Image}
+			<li><a href="#"><img src="{image:Slide5}" alt="{Title}" width="1280" height="{select:Slider Height}"/></a></li>{/block:IfSlide5Image}{block:IfSlide6Image}
+			<li><a href="#"><img src="{image:Slide6}" alt="{Title}" width="1280" height="{select:Slider Height}"/></a></li>{/block:IfSlide6Image}{block:IfSlide7Image}
+			<li><a href="#"><img src="{image:Slide7}" alt="{Title}" width="1280" height="{select:Slider Height}"/></a></li>{/block:IfSlide7Image}{block:IfSlide8Image}
+			<li><a href="#"><img src="{image:Slide8}" alt="{Title}" width="1280" height="{select:Slider Height}"/></a></li>{/block:IfSlide8Image}
 		</ul>
 	</div>
 	<div class="dc_bullets">
@@ -407,7 +472,7 @@
 <div id="middle" class="hide">{block:IfShowPages}{block:HasPages}
     <div class="pages">
 		<h2 class="pagestitle" data-coupling="#pagescontent">
-			<a href="#" title="{lang:Pages}">
+			<a href="#" title="{block:IfPageTitle}{text:Page Title}{/block:IfPageTitle}{block:IfNotPageTitle}{lang:Pages}{/block:IfNotPageTitle}">
 			    <span class="icon-down-open"></span>
 			</a>
 		</h2>
@@ -445,7 +510,7 @@
 		<div class="details">
 			<div class="information">
 				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
-				{NoteCountWithLabel} </a>
+				{Timeago} </a>
 			</div>
 			<div class="buttons">
 				<span title="{lang:Likes}">
@@ -468,7 +533,7 @@
 		<div class="details">
 			<div class="information">
 				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
-				{NoteCountWithLabel} </a>
+				{Timeago} </a>
 			</div>
 			<div class="buttons">
 				<span title="{lang:Likes}">
@@ -491,7 +556,7 @@
 		<div class="details">
 			<div class="information">
 				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
-				{NoteCountWithLabel} </a>
+				{Timeago} </a>
 			</div>
 			<div class="buttons">
 				<span title="{lang:Likes}">
@@ -511,7 +576,7 @@
 		<div class="details {block:PermalinkPagination}show{/block:PermalinkPagination}{block:PermalinkPage}hide{/block:PermalinkPage}">
 			<div class="information">
 				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
-				{NoteCountWithLabel} </a>
+				{Timeago} </a>
 			</div>
 			<div class="buttons">
 				<span title="{lang:Likes}">
@@ -534,7 +599,7 @@
 		<div class="details">
 			<div class="information">
 				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
-				{NoteCountWithLabel} </a>
+				{Timeago} </a>
 			</div>
 			<div class="buttons">
 				<span title="{lang:Likes}">
@@ -544,9 +609,15 @@
 			</div>
 		</div>
 	</div>{/block:Quote}{block:Photo}
-	<div class="entry no-border" id="{PostID}">
+	<div class="entry no-border" id="{PostID}">{block:IfPhotoCaptionOnHover}
 	    {block:IndexPage}{block:LinkURL} <a href="{LinkURL}">{/block:LinkURL}
-		<div class="overlay" title="{lang:TimeAgo with NoteCount notes and PlayCount plays}">
+		<div class="overlay" title="{lang:TimeAgo with NoteCount notes and PlayCount plays}">{block:IfShowCaption}{block:Caption}
+		<div class="hover-caption">
+			 {Caption}
+		<span class="bottom">
+		    {TimeAgo}
+		</span>
+		</div>{/block:Caption}{/block:IfShowCaption}
 		</div>
 		 {block:LinkURL} </a>{/block:LinkURL}
 		 <span class="like-button" title="{lang:Likes}">
@@ -559,20 +630,21 @@
 		 <span class="icon-link">
 		 </span>
 		</a>
-		<a href="{PhotoURL-1280}" class="cinthya zoom" title="{lang:Click for high-res photo}">
+		<a href="{PhotoURL-HighRes}" class="cinthya zoom" title="{lang:Click for high-res photo}">
 		 <span class="icon-export">
 		 </span>
-		</a>{/block:IndexPage}
+		</a>{/block:IndexPage}{/block:IfPhotoCaptionOnHover}
 		<div class="photo">
-			 {LinkOpenTag} <img src="{block:IndexPage}{PhotoURL-250}{/block:IndexPage}{block:PermalinkPage}{PhotoURL-500}{/block:PermalinkPage}" width="{block:IndexPage}{PhotoWidth-250}{/block:IndexPage}{block:PermalinkPage}{PhotoWidth-500}{/block:PermalinkPage}" height="{block:IndexPage}{PhotoHeight-250}{/block:IndexPage}{block:PermalinkPage}{PhotoHeight-500}{/block:PermalinkPage}" alt="{PhotoAlt}">{LinkCloseTag}
-		</div>{block:permalinkpage}{block:Caption}
+			 {LinkOpenTag} <img src="{block:IndexPage}{PhotoURL-500}{/block:IndexPage}{block:PermalinkPage}{PhotoURL-HighRes}{/block:PermalinkPage}" width="{block:IndexPage}{PhotoWidth-500}{/block:IndexPage}{block:PermalinkPage}{PhotoWidth-HighRes}{/block:PermalinkPage}" height="{block:IndexPage}{PhotoHeight-500}{/block:IndexPage}{block:PermalinkPage}{PhotoHeight-HighRes}{/block:PermalinkPage}" alt="{block:IfPhotoAlt}{text:Photo Alt}{/block:IfPhotoAlt}{block:IfNotPhotoAlt}{PhotoAlt}{/block:IfNotPhotoAlt}">{LinkCloseTag}
+		</div>
+		<div class="photo-info">{block:IfPhotoCaptionOnHover}{block:permalinkpage}{block:IfShowCaption}{block:Caption}
 		<div class="post-captions">
 			 {Caption}
-		</div>{/block:Caption}
-		<div class="details extra-padding">
+		</div>{/block:Caption}{/block:IfShowCaption}
+		<div class="details">
 			<div class="information">
 				<a href="//{name}.tumblr.com/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}" title="{lang:Show all posts made on this day}">
-				{TimeAgo} </a>
+				{Timeago} </a>
 			</div>
 			<div class="buttons">
 				<span title="{lang:Likes}">
@@ -580,20 +652,42 @@
 				<span title="{lang:Reblogs}">
 				{ReblogButton size="16"} </span>
 			</div>
-		</div>{/block:permalinkpage}
+		</div>{/block:permalinkpage}{/block:IfPhotoCaptionOnHover}{block:IfNotPhotoCaptionOnHover}{block:IfShowCaption}{block:Caption}
+		<div class="post-captions">
+			 {Caption}
+		</div>{/block:Caption}{/block:IfShowCaption}
+		<div class="details">
+			<div class="information">
+				<a {block:indexpage}href="{permalink}" title="{lang:Permalink for this post}"{/block:indexpage}{block:permalinkpage}href="//{name}.tumblr.com/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}" title="{lang:Show all posts made on this day}"{/block:permalinkpage}>
+				{Timeago} </a>
+			</div>
+			<div class="buttons">
+				<span title="{lang:Likes}">
+				{LikeButton size="16"} </span>
+				<span title="{lang:Reblogs}">
+				{ReblogButton size="16"} </span>
+		 <a href="{PhotoURL-HighRes}" class="cinthya">
+		 <span class="icon-export hi-res" title="{lang:Click for high-res photo}">
+		 </span>
+		</a>
+			</div>
+	    </div>{/block:IfNotPhotoCaptionOnHover}
+		</div>
 	</div>{/block:Photo}{block:Photoset}
 	<div class="entry" id="{PostID}">
-		<div class="photo">
-			 {block:IndexPage}
+		<div class="photo">{block:IndexPage}
 			<div class="photoset">
-				 {block:Photos} <a href="{PhotoURL-1280}" class="cinthya" title="{lang:Click for high-res photo}">
-				<img src="{PhotoURL-250}" width="{PhotoWidth-250}{/block:PermalinkPage}" height="{PhotoHeight-250}" alt="{PhotoAlt}">
+				 {block:Photos} <a href="{PhotoURL-HighRes}" class="cinthya" title="{lang:Click for high-res photo}">
+				<img src="{PhotoURL-500}" width="{PhotoWidth-500}{/block:PermalinkPage}" height="{PhotoHeight-500}" alt="{PhotoAlt}">
 				</a> {/block:Photos}
 			</div>
-			<div class="details">
+			<div class="details">{block:IfShowCaption}{block:Caption}
+		<div class="post-captions">
+			 {Caption}
+		</div>{/block:Caption}{/block:IfShowCaption}
 				<div class="information">
 					<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
-					{NoteCountWithLabel} </a>
+					{Timeago} </a>
 				</div>
 				<div class="buttons">
 					<span title="{lang:Likes}">
@@ -611,15 +705,15 @@
 			</div>
 			<div class="responsive-level-3">
 			<div class="photoset">
-				 {block:Photos} <a href="{PhotoURL-1280}" class="cinthya" title="{lang:Click for high-res photo}">
-				<img src="{PhotoURL-250}" width="{PhotoWidth-250}" height="{PhotoHeight-250}" alt="{PhotoAlt}">
+				 {block:Photos} <a href="{PhotoURL-HighRes}" class="cinthya" title="{lang:Click for high-res photo}">
+				<img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" alt="{PhotoAlt}">
 				</a> {/block:Photos}
 			</div>
 			</div>
-			</div>{block:Caption}
+			</div>{block:IfShowCaption}{block:Caption}
 		<div class="post-captions">
 			 {Caption}
-		</div>{/block:Caption}
+		</div>{/block:Caption}{/block:IfShowCaption}
 		<div class="details extra-padding">
 			<div class="information">
 				<a href="//{name}.tumblr.com/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}" title="{lang:Show all posts made on this day}">
@@ -641,19 +735,19 @@
 		        <span title="{block:Artist}{Artist}{/block:Artist} &mdash; {block:TrackName}{TrackName}{/block:TrackName}">
 		            {AudioPlayerWhite}
 		        </span>{/block:AudioPlayer}
-		        {block:AudioEmbed}{block:IndexPage}{AudioEmbed-250}{/block:IndexPage}{block:permalinkpage}{AudioEmbed-640}{/block:permalinkpage}{/block:AudioEmbed}
+		        {block:AudioEmbed}{block:IndexPage}{AudioEmbed}{/block:IndexPage}{block:permalinkpage}{AudioEmbed-640}{/block:permalinkpage}{/block:AudioEmbed}
 		    </div>{block:AlbumArt}
 		        <a href="{AlbumArtURL}" class="cinthya" title="{lang:TimeAgo with NoteCount notes and PlayCount plays}">
 		            <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist} &mdash; {block:TrackName}{TrackName}{/block:TrackName}" width="500" height="500" />
 		        </a>{/block:AlbumArt}
-		</div>{block:permalinkpage}{block:Caption}
+		</div>{block:IfShowCaption}{block:Caption}
 		<div class="post-captions">
 			 {Caption}
-		</div>{/block:Caption}{/block:permalinkpage}
+		</div>{/block:Caption}{/block:IfShowCaption}
 		<div class="details extra-padding">
 			<div class="information">
 				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
-				{NoteCountWithLabel} </a>
+				{Timeago} </a>
 			</div>
 			<div class="buttons">
 				<span title="{lang:Likes}">
@@ -665,15 +759,15 @@
 	</div>{/block:Audio}{block:Video}
 	<div class="entry" id="{PostID}">
 		<div class="media">
-			 {block:IndexPage}{VideoEmbed-250}{/block:IndexPage}{block:PermalinkPage}{VideoEmbed-700}{/block:PermalinkPage}
-		</div>{block:permalinkpage}{block:Caption}
+			 {block:IndexPage}{VideoEmbed}{/block:IndexPage}{block:PermalinkPage}{VideoEmbed-700}{/block:PermalinkPage}
+		</div>{block:IfShowCaption}{block:Caption}
 		<div class="post-captions">
 			 {Caption}
-		</div>{/block:Caption}{/block:permalinkpage}
+		</div>{/block:Caption}{/block:IfShowCaption}
 		<div class="details extra-padding">
 			<div class="information">
 				<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
-				{NoteCountWithLabel} </a>
+				{Timeago} </a>
 			</div>
 			<div class="buttons">
 				<span title="{lang:Likes}">
@@ -721,7 +815,7 @@
 			    <div class="platform gplus" id="gplus-newshare-{PostID}"></div>{block:Photo}
 			    <div class="platform pinterest" id="pin-newshare-{PostID}"></div>
 			        <script>
-			            var media = '{PhotoURL-1280}';
+			            var media = '{PhotoURL-HighRes}';
 			        </script>{block:Photo}
 			</div>
 		</div>
@@ -839,7 +933,7 @@
     <script src="//static.tumblr.com/tekiskr/Vg4n2nz3g/jquery.min.js"></script>
     <script>{block:ifDisqusShortname}{block:PermalinkPagination}
       var disqus_shortname = '{text:Disqus Shortname}';{/block:PermalinkPagination}{/block:ifDisqusShortname}{block:IfShowSlideshow}{block:IndexPage}
-      var delt = "{select:Slide Effect}";{/block:IndexPage}{/block:IfShowSlideshow}
+      var delt = "{select:Slider Effect}";{/block:IndexPage}{/block:IfShowSlideshow}
       var transparency = {select:Header Transparency};{block:IfShowSocialLikes}
       var blog = '{block:IndexPage}{BlogURL}{/block:IndexPage}{block:PermalinkPagination}{Permalink}{/block:PermalinkPagination}';
       var title = '{Description}';
