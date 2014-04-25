@@ -359,10 +359,14 @@
       background:{color:2nd BG}
       }
       @media screen and (min-width:700px) {
-      body.index .entry,body.index .entry .media iframe,
+      body.index .entry,
       body.index .entry .overlay,body.index .entry .captions,
       body.index .hover-caption {
-      width:{select:Layout} !important
+      width:{select:Layout} !important;
+      }
+      body.index .entry .media iframe {
+      max-width:{select:Layout} !important;
+      width:100%;
       }{block:IfFixedFooter}{block:IfInfiniteScrolling}
       #posts {
       margin:{block:PermalinkPage}0 auto 85px{/block:PermalinkPage}{block:IndexPage}90px auto 80px{/block:IndexPage} !important;
@@ -759,7 +763,7 @@
 	</div>{/block:Audio}{block:Video}
 	<div class="entry" id="{PostID}">
 		<div class="media">
-			 {block:IndexPage}{VideoEmbed}{/block:IndexPage}{block:PermalinkPage}{VideoEmbed-700}{/block:PermalinkPage}
+			 {block:IndexPage}{Video-500}{/block:IndexPage}{block:PermalinkPage}{Video-700}{/block:PermalinkPage}
 		</div>{block:IfShowCaption}{block:Caption}
 		<div class="post-captions">
 			 {Caption}
