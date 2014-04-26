@@ -11,7 +11,7 @@
                                              
 =======================================================================
    Diagonal Noise
-   Update: Apr 21st, 2014
+   Update: Apr 26th, 2014
    By: Dinata Daniel
 =======================================================================
 -->
@@ -27,8 +27,8 @@
     <meta name="select:Layout" content="350px" Title="3 Columns" />
     <meta name="select:Layout" content="450px" Title="2 Columns" />
     <meta name="select:Layout" content="700px" Title="Regular" />
-    <meta name="select:Post Margin" content="0 10px 20px" Title="Far" />
     <meta name="select:Post Margin" content="0 5px 10px" Title="Medium" />
+    <meta name="select:Post Margin" content="0 10px 20px" Title="Far" />
     <meta name="select:Post Margin" content="0" Title="Close" />
     <meta name="select:Slider Type" content="0 auto -5px" Title="With Middle Nav" />
     <meta name="select:Slider Type" content="4% auto 10%" Title="Without Middle Nav" />
@@ -355,18 +355,20 @@
       width:{select:Scrollbar Width};
       height:0
       }
+      body.index iframe.photoset {
+      margin:0 auto
+	  }
       ::-webkit-scrollbar-thumb {
       background:{color:2nd BG}
       }
       @media screen and (min-width:700px) {
-      body.index .entry,
-      body.index .entry .overlay,body.index .entry .captions,
-      body.index .hover-caption {
-      width:{select:Layout} !important;
+      body.index .entry,body.index .entry .overlay,
+      body.index .entry .captions,body.index .hover-caption {
+      width:{select:Layout} !important
       }
       body.index .entry .media iframe {
       max-width:{select:Layout} !important;
-      width:100%;
+      width:100%
       }{block:IfFixedFooter}{block:IfInfiniteScrolling}
       #posts {
       margin:{block:PermalinkPage}0 auto 85px{/block:PermalinkPage}{block:IndexPage}90px auto 80px{/block:IndexPage} !important;
@@ -684,11 +686,11 @@
 				 {block:Photos} <a href="{PhotoURL-HighRes}" class="cinthya" title="{lang:Click for high-res photo}">
 				<img src="{PhotoURL-500}" width="{PhotoWidth-500}{/block:PermalinkPage}" height="{PhotoHeight-500}" alt="{PhotoAlt}">
 				</a> {/block:Photos}
-			</div>
-			<div class="details">{block:IfShowCaption}{block:Caption}
+			</div>{block:IfShowCaption}{block:Caption}
 		<div class="post-captions">
 			 {Caption}
 		</div>{/block:Caption}{/block:IfShowCaption}
+			<div class="details">
 				<div class="information">
 					<a href="{permalink}" title="{lang:Posted on Month DayOfMonth Year with NoteCount notes}">
 					{Timeago} </a>
